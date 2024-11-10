@@ -1,0 +1,163 @@
+/* Estilos generales */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    overflow: hidden; /* Evitar scroll vertical */
+  }
+  
+  /* Contenedor del formulario de registro */
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  
+  }
+  
+  /* Tarjeta de registro */
+  .register-card {
+    width: 85%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Dejar espacio para el footer */
+  }
+  
+  /* Imagen de registro */
+  .register-image {
+    width: 45%;
+    background-color: #000000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .register-overlay {
+    position: absolute;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+  }
+  
+  .register-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .register-description {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  
+  /* Contenedor del formulario */
+  .register-form {
+    width: 55%;
+    padding: 40px 30px; /* Reducir padding para menor altura */
+    background-color: #ffffff;
+  }
+  
+  /* Encabezado del formulario */
+  .register-form h2 {
+    color: #1abc9c;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px; /* Reducir espacio */
+    font-size: 2rem;
+  }
+  
+  /* Campo de entrada */
+  .form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .custom-input {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  
+  .custom-input:focus {
+    outline: none;
+    border-color: #1abc9c;
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+  }
+  
+  /* Botón de envío */
+  .submit-button {
+    background-color: #1abc9c !important;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #158467 !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Estilos para el enlace */
+  p {
+    color: #7f8c8d;
+    text-align: center;
+  }
+  
+  a {
+    color: #1abc9c;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer Fijo */
+  app-footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 992px) {
+    .register-card {
+      flex-direction: column;
+      width: 90%;
+      max-width: 600px;
+    }
+  
+    .register-image {
+      width: 100%;
+      height: 250px;
+    }
+  
+    .register-form {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+  
