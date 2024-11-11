@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private authService = inject(AuthService)
 
   constructor() {
     this.registerForm = this.fb.group({
@@ -34,10 +36,20 @@ export class RegisterComponent {
     return this.registerForm.controls[control].hasError(error);
   }
 
-  onSubmit(){
-    if(this.registerForm.invalid){
-      return;
-    };
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const userData = this.registerForm.value;
+
+      this.authService.register(userData).subscribe({
+        next: () => {
+          this.showSnackBar('Usuario creado correctamente');
+          this.router.navigate(['/auth/login']);
+        },
+        error: (error) => {
+          this.showSnackBar(error.error.message);
+        }
+      });
+    }
   }
 
   private showSnackBar(message: string): void {

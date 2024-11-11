@@ -5,6 +5,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../../core/services/auth.service';
+import { AuthRequest } from '../../../shared/models/auth-request-model';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder)
   private router = inject(Router);
   private snackBar= inject(MatSnackBar);
+  private authService= inject(AuthService)
 
   constructor(){
     this.loginForm = this.fb.group({
@@ -37,7 +40,19 @@ export class LoginComponent {
       return;
     };
 
-    this.showSnackBar("Inicio de sesion exitoso")
+    const credentials: AuthRequest = this.loginForm.value;
+
+    this.authService.login(credentials).subscribe({
+      next: () => {
+        this.showSnackBar('Inicio de sesión exitoso');
+        //falta crear la ruta
+        this.router.navigate(['/cliente']);
+      },
+      error: () => {
+        this.showSnackBar('Error en el inicio de sesión. Por favor, intenta de nuevo.');
+      },
+    });
+
   }
 
   private showSnackBar(message:string): void{
