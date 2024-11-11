@@ -1,1 +1,33 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a  href="#" class="navbar-brand">TrueTest</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          @if(!isAuthenticated){
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home">Test</a>
+            </li>
+            <li class="nav-item ms-3">
+              <a class="btn btn-outline-primary" routerLink="/auth/register">Regístrate</a>
+            </li>
+            <li class="nav-item ms-2">
+              <a class="btn btn-primary" routerLink="/auth/login">Iniciar Sesión</a>
+            </li>
+          }@else{
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                Mi Perfil
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/customer/profile">Ver Perfil</a></li>
+                <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </nav>

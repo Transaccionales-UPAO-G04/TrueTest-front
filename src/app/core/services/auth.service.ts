@@ -46,7 +46,7 @@ export class AuthService {
     return authData ? authData : null;
   }
 
-  //////
+  //////obtener rol
   getUserRole(): string | null {
     const authData = this.storageService.getAuthData();
     return authData ? authData.role : null;

@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './ver-perfil.component.css'
 })
 export class VerPerfilComponent {
+  
 
 }
