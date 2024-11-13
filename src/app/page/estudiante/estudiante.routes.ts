@@ -7,6 +7,9 @@ import { VerPerfilComponent } from '../../shared/components/ver-perfil/ver-perfi
 import { ActualizarPerfilComponent } from '../../shared/components/actualizar-perfil/actualizar-perfil.component';
 
 export const estudianteRoutes: Routes = [
+
+    {path: '', redirectTo: 'test', pathMatch: 'full'},
+
     {
         path: '',
         component: EstudianteLayoutComponent,

@@ -46,7 +46,7 @@ export class LoginComponent {
       next: () => {
         this.showSnackBar('Inicio de sesión exitoso');
         //falta crear la ruta
-        this.router.navigate(['/cliente']);
+        this.router.navigate(['/estudiante']);
       },
       error: () => {
         this.showSnackBar('Error en el inicio de sesión. Por favor, intenta de nuevo.');
@@ -60,5 +60,10 @@ export class LoginComponent {
       duration: 2000,
       verticalPosition: 'top'
     });
+  }
+
+
+  goToEstudianteLayout(): void {
+    this.router.navigate(['/estudiante']);
   }
 }
