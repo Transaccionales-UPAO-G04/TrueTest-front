@@ -1,0 +1,92 @@
+/* Fondo general */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #1e88e5, #42a5f5, #90caf9);
+    background-size: 200% 200%;
+    animation: gradientAnimation 8s ease infinite;
+  }
+  
+  /* Animación de fondo */
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Contenedor de actualización de perfil */
+  .update-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Tarjeta de actualización de perfil */
+  .update-profile-card {
+    width: 85%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+  }
+  
+  /* Formulario de actualización de perfil */
+  .update-profile-form h2 {
+    color: #1e88e5;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Campos del formulario */
+  .form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field-label {
+    color: #1e88e5 !important;
+    font-weight: 500;
+  }
+  
+  input {
+    color: #333;
+  }
+  
+  /* Botón de envío */
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff !important;
+    background-color: #1e88e5 !important;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #1565c0 !important;
+    transform: scale(1.02);
+  }
+  
+  .submit-button:disabled {
+    background-color: #b0bec5 !important;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .update-profile-card {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
