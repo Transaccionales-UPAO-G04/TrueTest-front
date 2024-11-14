@@ -19,14 +19,6 @@
           </mat-form-field>
   
           <mat-form-field class="form-field">
-            <mat-label>Apellido</mat-label>
-            <input matInput formControlName="lastName" placeholder="Ingrese su apellido">
-            @if(controlHasError('lastName', 'required')){
-              <mat-error>Este campo es obligatorio</mat-error>
-            }
-          </mat-form-field>
-  
-          <mat-form-field class="form-field">
             <mat-label>Correo Electrónico</mat-label>
             <input matInput formControlName="email" type="email" placeholder="Ingrese su correo electrónico">
             @if(controlHasError('email', 'required')){
@@ -41,14 +33,6 @@
             <mat-label>Contraseña</mat-label>
             <input matInput formControlName="password" type="password" placeholder="Ingrese su contraseña">
             @if(controlHasError('password', 'required')){
-              <mat-error>Este campo es obligatorio</mat-error>
-            }
-          </mat-form-field>
-  
-          <mat-form-field class="form-field">
-            <mat-label>Dirección de Envío</mat-label>
-            <input matInput formControlName="shippingAddress" placeholder="Ingrese su dirección de envío">
-            @if(controlHasError('shippingAddress', 'required')){
               <mat-error>Este campo es obligatorio</mat-error>
             }
           </mat-form-field>

@@ -1,1 +1,11 @@
-<p>ver-perfil works!</p>
+<div class="container">
+    <h2>Perfil de Usuario</h2>
+    <p><strong>Nombre:</strong> {{ profile.firstName }}</p>
+    <p><strong>Email:</strong> {{ profile.email }}</p>
+  
+    <!-- Botón para actualizar perfil -->
+    <button (click)="navigateToUpdateProfile()" class="update-button">
+      Actualizar Perfil
+    </button>
+  </div>
+  
