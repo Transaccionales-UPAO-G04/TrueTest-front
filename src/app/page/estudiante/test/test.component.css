@@ -1,0 +1,22 @@
+.button-container {
+    display: flex;               /* Usar flexbox para alinear los botones */
+    justify-content: center;     /* Centra los botones horizontalmente */
+    align-items: center;         /* Centra los botones verticalmente */
+    gap: 10px;                   /* Espacio entre los botones */
+    padding: 20px;               /* Espacio alrededor de los botones */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

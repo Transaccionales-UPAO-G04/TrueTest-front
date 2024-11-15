@@ -14,7 +14,7 @@ export const estudianteRoutes: Routes = [
         path: '',
         component: EstudianteLayoutComponent,
         children: [
-          { path: 'test', component: TestComponent },
+          { path: 'test', component: TestComponent},
           { path: 'mentores', component: MentoresComponent },
           { path: 'planes', component: PlanesComponent },         
           { path: 'perfil', component: VerPerfilComponent },

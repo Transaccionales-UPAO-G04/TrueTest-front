@@ -1,1 +1,77 @@
-<p>test works!</p>
+<div class="min-h-screen bg-gray-50 py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      <p class="mt-2 text-gray-600">Cargando...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline">{{ error }}</span>
+    </div>
+
+    <!-- Main Content -->
+    <ng-container *ngIf="!loading && !error">
+      <ng-container *ngIf="!result">
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Test Vocacional</h1>
+          <p class="text-gray-600">
+            Descubre tu vocación respondiendo algunas preguntas sobre tus intereses y habilidades
+          </p>
+        </div>
+
+        <div *ngIf="questions.length > 0" class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl mx-auto">
+          <div class="text-center">
+            <h2 class="text-2xl font-bold">Pregunta {{currentStep + 1}} de {{questions.length}}</h2>
+            <div class="mt-2 bg-gray-200 rounded-full h-2.5">
+              <div class="bg-blue-600 h-2.5 rounded-full" [style.width.%]="getProgress()"></div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-lg text-center py-4">{{questions[currentStep].text}}</p>
+            
+            <div class="flex justify-center gap-4">
+              <button *ngFor="let value of [1,2,3,4,5]"
+                      class="h-16 w-16 rounded-lg border-2 border-gray-200 hover:bg-blue-100 transition-colors"
+                      (click)="handleAnswer(value)">
+                {{value}}
+              </button>
+            </div>
+
+            <div class="text-center text-sm text-gray-500 mt-4">
+              1 = Totalmente en desacuerdo, 5 = Totalmente de acuerdo
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div *ngIf="result" class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">¡Tu resultado está listo!</h2>
+
+        <div class="space-y-6">
+          <div [class]="result.color + ' p-8 rounded-full inline-block mx-auto'">
+            <i [class]="'fas fa-' + result.icon + ' text-4xl text-white'"></i>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-2xl font-semibold">Te recomendamos estudiar:</h3>
+            <p class="text-4xl font-bold text-blue-600">{{result.carrera}}</p>
+            <p class="text-gray-600 mt-4">
+              Esta recomendación se basa en tus respuestas y preferencias mostradas durante la prueba.
+            </p>
+          </div>
+
+          <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  (click)="resetTest()">
+            Realizar prueba nuevamente
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+  
+  
