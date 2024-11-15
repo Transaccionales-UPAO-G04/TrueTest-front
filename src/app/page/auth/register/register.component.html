@@ -12,8 +12,8 @@
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <mat-form-field class="form-field">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="firstName" placeholder="Ingrese su nombre">
-            @if(controlHasError('firstName', 'required')){
+            <input matInput formControlName="nombre" placeholder="Ingrese su nombre">
+            @if(controlHasError('nombre', 'required')){
               <mat-error>Este campo es obligatorio</mat-error>
             }
           </mat-form-field>

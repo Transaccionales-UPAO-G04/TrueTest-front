@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { AuthRequest } from '../../shared/models/auth-request-model';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../../shared/models/auth-response.model';
 import { RegisterRequest } from '../../shared/models/register.request.model';
 import { RegisterResponse } from '../../shared/models/register-response.model';
@@ -17,15 +17,23 @@ export class AuthService {
   private http = inject(HttpClient);
   private storageService = inject(StorageService);
 
+
+  // Observable para el estado de autenticación
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
   constructor() { }
 
 
   // post ===> guiarse por el back
   login(authRequest: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseURL}/login`, authRequest)
-    .pipe(
-      tap(response => this.storageService.setAuthData(response))
-    );
+      .pipe(
+        tap(response => {
+          this.storageService.setAuthData(response);
+          this.isAuthenticatedSubject.next(true); // Notificar autenticación
+        })
+      );
   }
 
   register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
@@ -35,6 +43,7 @@ export class AuthService {
 
   logout(): void {
     this.storageService.clearAuthData();
+    this.isAuthenticatedSubject.next(false); // Notificar cierre de sesión
   }
 
   isAuthenticated(): boolean {

@@ -50,7 +50,7 @@ export class VerPerfilComponent implements OnInit {
   }
 
   navigateToUpdateProfile(): void {
-    this.router.navigate(['/customer/profile/update']);
+    this.router.navigate(['estudiante/perfil/actualizar']);
   }
 
   private showSnackBar(message: string): void {
