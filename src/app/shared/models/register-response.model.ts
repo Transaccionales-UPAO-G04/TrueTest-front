@@ -1,7 +1,10 @@
 export interface RegisterResponse{
     id:number;
     email:string;
-    firstName:string;
-    lastName:string;
-    shippingAddress:string;
+    nombre:string;
+    tipoUsuario: string;
+    experiencia: string;
+    especialidad: string;
+    linkRecurso: string;
+    linkRecursoPremium: string;
 }

@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    baseURL: 'https://truetest-u-api-latest.onrender.com'
+    baseURL: 'http://localhost:8080/api/v2'
 };
