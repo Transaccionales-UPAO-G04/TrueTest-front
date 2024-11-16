@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsuarioPerfil } from '../../models/usuario-perfil';
+import { UsuarioPerfil } from '../../models/usuario-perfil.model';
 import { PerfilUsuarioService } from '../../../core/services/perfil-usuario.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';

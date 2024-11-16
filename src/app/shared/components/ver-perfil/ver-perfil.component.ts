@@ -3,25 +3,25 @@ import { PerfilUsuarioService } from '../../../core/services/perfil-usuario.serv
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuarioPerfil } from '../../models/usuario-perfil';
+import { UsuarioPerfil } from '../../models/usuario-perfil.model';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-ver-perfil',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './ver-perfil.component.html',
   styleUrl: './ver-perfil.component.css'
 })
 export class VerPerfilComponent implements OnInit {
   profile!: UsuarioPerfil;
-  //operador de aserción de no nulo.
-  //En resumen, ! le dice al compilador que ignore las posibles verificaciones de null o undefined y asuma que la variable tiene un valor válido.
+
 
   private userProfileService = inject(PerfilUsuarioService);
   private authService = inject(AuthService);
   private router = inject(Router);
-  private snackBar = inject(MatSnackBar); // Inyectar MatSnackBar
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -42,15 +42,11 @@ export class VerPerfilComponent implements OnInit {
           this.showSnackBar('Error al cargar el perfil');
         }
       });
-    } else {
-
-      this.showSnackBar('Usuario no autenticado');
-      this.router.navigate(['/auth/login']);
-    }
+    } 
   }
 
   navigateToUpdateProfile(): void {
-    this.router.navigate(['estudiante/perfil/actualizar']);
+    this.router.navigate(['/estudiante/perfil/actualizar']);
   }
 
   private showSnackBar(message: string): void {
