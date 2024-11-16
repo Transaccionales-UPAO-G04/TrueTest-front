@@ -28,12 +28,9 @@ export class AuthService {
   // post ===> guiarse por el back
   login(authRequest: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseURL}/login`, authRequest)
-      .pipe(
-        tap(response => {
-          this.storageService.setAuthData(response);
-          this.isAuthenticatedSubject.next(true); // Notificar autenticación
-        })
-      );
+    .pipe(
+      tap(response => this.storageService.setAuthData(response))
+    );
   }
 
   register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
@@ -43,7 +40,6 @@ export class AuthService {
 
   logout(): void {
     this.storageService.clearAuthData();
-    this.isAuthenticatedSubject.next(false); // Notificar cierre de sesión
   }
 
   isAuthenticated(): boolean {
@@ -55,7 +51,6 @@ export class AuthService {
     return authData ? authData : null;
   }
 
-  //////obtener rol
   getUserRole(): string | null {
     const authData = this.storageService.getAuthData();
     return authData ? authData.role : null;
