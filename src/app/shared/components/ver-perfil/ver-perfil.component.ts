@@ -6,7 +6,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuarioPerfil } from '../../models/usuario-perfil.model';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-ver-perfil',
   standalone: true,
@@ -42,7 +41,7 @@ export class VerPerfilComponent implements OnInit {
           this.showSnackBar('Error al cargar el perfil');
         }
       });
-    } 
+    }
   }
 
   navigateToUpdateProfile(): void {
