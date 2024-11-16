@@ -1,92 +1,83 @@
-/* Navbar general */
+/* Estilos del Navbar */
 .navbar {
-  background-color: rgba(30, 136, 229, 0.9); /* Fondo con transparencia */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-}
-
-/* Marca */
-.navbar-brand {
+  width: 100%;
+  background: linear-gradient(to right, #4facfe, #00f2fe); /* Fondo degradado azul */
   color: #fff;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand:hover {
-  color: #bbdefb;
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 30px; /* Ajusta el tamaño del logo */
+  width: auto; /* Mantén las proporciones */
+  margin-right: 10px; /* Espaciado entre el logo y el texto */
+}
+
+.navbar-brand {
+  font-family: 'Poppins', sans-serif; /* Fuente personalizada */
+  font-size: 1.5rem; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+  color: #ffffff; /* Color del texto */
+  display: flex;
+  align-items: center;
+  padding-left: 0; /* Elimina espacio a la izquierda */
+}
+
+/* Estilos del Menú */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Espaciado entre elementos del menú */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  color: #fff;
   text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre ícono y texto */
+  transition: color 0.3s;
 }
 
-/* Links de la navbar */
-.nav-link {
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+.navbar-menu li a:hover {
+  color: #ffdf5d; /* Color al pasar el mouse */
 }
 
-.nav-link:hover {
-  color: #90caf9;
+/* Estilos de los Íconos */
+.icon {
+  font-size: 20px; /* Tamaño del ícono */
 }
 
-/* Botones de registro e inicio de sesión */
-.btn-outline-primary {
-  color: #1e88e5;
-  border-color: #90caf9;
-  transition: all 0.3s ease;
-  font-weight: bold;
+/* Íconos personalizados */
+.icon-prueba:before {
+  content: "\1F4D6"; /* Código Unicode para un ícono */
 }
 
-.btn-outline-primary:hover {
-  color: #ffffff;
-  background-color: #1e88e5;
-  border-color: #1e88e5;
+.icon-mentores:before {
+  content: "\1F464"; /* Código Unicode para un ícono */
 }
 
-.btn-primary {
-  background-color: #1e88e5;
-  border-color: #1e88e5;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.icon-planes:before {
+  content: "\1F4C8"; /* Código Unicode para un ícono */
 }
 
-.btn-primary:hover {
-  background-color: #1565c0;
-  transform: scale(1.02);
-}
-
-/* Dropdown menú */
-.dropdown-menu {
-  background-color: #ffffff;
-  border: 1px solid #90caf9;
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.dropdown-item {
-  color: #424242;
-  font-weight: 500;
-}
-
-.dropdown-item:hover {
-  background-color: #e3f2fd;
-  color: #1e88e5;
-}
-
-/* Icono del toggler */
-.navbar-toggler {
-  border: none;
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .navbar-nav .nav-link,
-  .navbar-nav .btn {
-    margin-top: 10px;
-  }
+.icon-login:before {
+  content: "\1F511"; /* Código Unicode para un ícono */
 }
