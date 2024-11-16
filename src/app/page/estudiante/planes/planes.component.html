@@ -1,1 +1,9 @@
-<p>planes works!</p>
+<div class="plan-container">
+    <div *ngFor="let plan of planes" class="plan-card">
+      <h2>{{ plan.nombre }}</h2>
+      <p>{{ plan.descripcion }}</p>
+      <p><strong>Precio:</strong> {{ plan.precio }}</p>
+      <button class="plan-button" (click)="seleccionarPlan(plan)">Seleccionar Plan</button>
+    </div>
+  </div>
+  

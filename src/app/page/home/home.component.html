@@ -1,0 +1,35 @@
+<!-- home.component.html -->
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row">
+        <!-- Tarjeta Prueba Vocacional -->
+        <div class="card" (click)="navigateTo('/estudiante/test')" (mouseover)="hover('prueba')" (mouseleave)="hover(null)">
+            <img src="prueba.jpg" alt="Prueba Vocacional" />
+            <button>Prueba Vocacional</button>
+            <div class="description" *ngIf="hovered === 'prueba'">
+                Explora tu vocación con nuestras pruebas especializadas.
+            </div>
+        </div>
+
+        <!-- Tarjeta Mentores -->
+        <div class="card" (click)="navigateTo('/estudiante/mentores')" (mouseover)="hover('mentores')" (mouseleave)="hover(null)">
+            <img src="mentores.jpg" alt="Mentores" />
+            <button>Mentores</button>
+            <div class="description" *ngIf="hovered === 'mentores'">
+                Conecta con mentores expertos en todas las áreas.
+            </div>
+        </div>
+
+        <!-- Tarjeta Planes -->
+        <div class="card" (click)="navigateTo('/estudiante/planes')" (mouseover)="hover('planes')" (mouseleave)="hover(null)">
+            <img src="planes.png" alt="Planes" />
+            <button>Planes</button>
+            <div class="description" *ngIf="hovered === 'planes'">
+                Descubre los planes que tenemos para ti.
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

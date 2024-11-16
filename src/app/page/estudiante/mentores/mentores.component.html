@@ -1,1 +1,11 @@
-<p>mentores works!</p>
+<div class="mentor-list-container">
+    <div class="mentor-card" *ngFor="let mentor of mentores">
+      <div class="mentor-info">
+        <h3>{{ mentor.nombre }}</h3>
+        <p><strong>Especialidad:</strong> {{ mentor.especialidad }}</p>
+        <p><strong>Experiencia:</strong> {{ mentor.experiencia }}</p>
+        <button (click)="agendarHorario(mentor.idMentor)" class="btn btn-primary">Agendar Horario</button>
+      </div>
+    </div>
+  </div>
+  
