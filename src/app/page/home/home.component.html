@@ -3,35 +3,33 @@
 
 <div class="container">
     <div class="row">
-        <!-- Prueba Vocacional -->
-        <div class="card">
-            <img src="prueba1.jpg" alt="Prueba Vocacional">
-            <div class="content">
-                <button routerLink="/prueba">Prueba Vocacional</button>
-                <div class="description">Pueden realizar la prueba vocacional y conocer su carrera ideal.</div>
+        <!-- Tarjeta Prueba Vocacional -->
+        <div class="card" (click)="navigateTo('/estudiante/test')" (mouseover)="hover('prueba')" (mouseleave)="hover(null)">
+            <img src="prueba.jpg" alt="Prueba Vocacional" />
+            <button>Prueba Vocacional</button>
+            <div class="description" *ngIf="hovered === 'prueba'">
+                Explora tu vocación con nuestras pruebas especializadas.
             </div>
         </div>
 
-        <!-- Mentores -->
-        <div class="card">
-            <img src="mentores.jpg" alt="Mentores">
-            <div class="content">
-                <button routerLink="/mentores">Mentores</button>
-                <div class="description">Tenemos mentores especializados en todas las carreras que registramos.</div>
+        <!-- Tarjeta Mentores -->
+        <div class="card" (click)="navigateTo('/estudiante/mentores')" (mouseover)="hover('mentores')" (mouseleave)="hover(null)">
+            <img src="mentores.jpg" alt="Mentores" />
+            <button>Mentores</button>
+            <div class="description" *ngIf="hovered === 'mentores'">
+                Conecta con mentores expertos en todas las áreas.
             </div>
         </div>
 
-        <!-- Planes -->
-        <div class="card">
-            <img src="planes.png" alt="Planes">
-            <div class="content">
-                <button routerLink="/planes">Planes</button>
-                <div class="description">Obten beneficios especial pagando una subscripcion (agendar sesiones, ver recursos especiales).</div>
+        <!-- Tarjeta Planes -->
+        <div class="card" (click)="navigateTo('/estudiante/planes')" (mouseover)="hover('planes')" (mouseleave)="hover(null)">
+            <img src="planes.png" alt="Planes" />
+            <button>Planes</button>
+            <div class="description" *ngIf="hovered === 'planes'">
+                Descubre los planes que tenemos para ti.
             </div>
         </div>
     </div>
 </div>
-
-
 
 <app-footer></app-footer>
