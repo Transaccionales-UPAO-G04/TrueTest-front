@@ -52,9 +52,6 @@ export class ActualizarPerfilComponent implements OnInit {
           this.showSnackBar('Error al cargar el perfil del usuario.');
         }
       });
-    } else {
-      this.showSnackBar('Usuario no autenticado.');
-      this.router.navigate(['/auth/login']);
     }
   }
 
