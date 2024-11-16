@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsuarioPerfil } from '../../models/usuario.perfil';
+import { UsuarioPerfil } from '../../models/usuario-perfil.model';
 import { PerfilUsuarioService } from '../../../core/services/perfil-usuario.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -52,9 +52,6 @@ export class ActualizarPerfilComponent implements OnInit {
           this.showSnackBar('Error al cargar el perfil del usuario.');
         }
       });
-    } else {
-      this.showSnackBar('Usuario no autenticado.');
-      this.router.navigate(['/auth/login']);
     }
   }
 
