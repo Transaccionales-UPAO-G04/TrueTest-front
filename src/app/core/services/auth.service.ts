@@ -2,11 +2,11 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
-import { AuthRequest } from '../../shared/models/auth-request-model';
+import { AuthRequest } from '../../shared/models/auth.request.model';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { AuthResponse } from '../../shared/models/auth-response.model';
+import { AuthResponse } from '../../shared/models/auth.response.model';
 import { RegisterRequest } from '../../shared/models/register.request.model';
-import { RegisterResponse } from '../../shared/models/register-response.model';
+import { RegisterResponse } from '../../shared/models/register.response.model';
 
 @Injectable({
   providedIn: 'root'

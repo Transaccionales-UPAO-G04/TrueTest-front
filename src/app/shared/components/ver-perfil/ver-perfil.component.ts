@@ -3,7 +3,7 @@ import { PerfilUsuarioService } from '../../../core/services/perfil-usuario.serv
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuarioPerfil } from '../../models/usuario-perfil';
+import { UsuarioPerfil } from '../../models/usuario.perfil';
 
 
 @Component({
