@@ -1,0 +1,92 @@
+/* Navbar general */
+.navbar {
+  background-color: rgba(30, 136, 229, 0.9); /* Fondo con transparencia */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+/* Marca */
+.navbar-brand {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+  color: #bbdefb;
+  text-decoration: none;
+}
+
+/* Links de la navbar */
+.nav-link {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #90caf9;
+}
+
+/* Botones de registro e inicio de sesión */
+.btn-outline-primary {
+  color: #1e88e5;
+  border-color: #90caf9;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-outline-primary:hover {
+  color: #ffffff;
+  background-color: #1e88e5;
+  border-color: #1e88e5;
+}
+
+.btn-primary {
+  background-color: #1e88e5;
+  border-color: #1e88e5;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1565c0;
+  transform: scale(1.02);
+}
+
+/* Dropdown menú */
+.dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid #90caf9;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  color: #424242;
+  font-weight: 500;
+}
+
+.dropdown-item:hover {
+  background-color: #e3f2fd;
+  color: #1e88e5;
+}
+
+/* Icono del toggler */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .navbar-nav .nav-link,
+  .navbar-nav .btn {
+    margin-top: 10px;
+  }
+}
