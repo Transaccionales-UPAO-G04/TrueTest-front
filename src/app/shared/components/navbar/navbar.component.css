@@ -5,25 +5,25 @@
   color: #fff;
   padding: 10px 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-container {
-  width: 100%;
-  max-width: 1200px;
+.footer-container {
+  color: #b0bec5;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100vw;
+  gap: 40px; /* Espaciado entre secciones */
+  box-sizing: border-box; /* Incluye padding y bordes en el tamaño */
 }
+
+
 .logo {
-  display: flex;
-  align-items: center;
+  max-width: 100px; /* Tamaño del logo */
+  margin-bottom: 10px;
 }
+
 .logo img {
-  height: 30px; /* Ajusta el tamaño del logo */
-  width: auto; /* Mantén las proporciones */
+  height: 5px; /* Ajusta el tamaño del logo */
   margin-right: 10px; /* Espaciado entre el logo y el texto */
 }
 
