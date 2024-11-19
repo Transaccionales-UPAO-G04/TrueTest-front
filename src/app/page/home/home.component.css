@@ -85,20 +85,20 @@
 /* Tarjeta izquierda: se expande hacia la derecha */
 .card:first-child:hover {
   transform: scale(2, 1) translateX(25%);
-  background-image: url('/nueva-imagen.jpg');
+  background-image: url('/pruebaExpand.png');
   z-index: 10;
 }
 
 /* Tarjeta central: se expande hacia ambos lados */
 .card:nth-child(2):hover {
   transform: scale(2.5, 1);
-  background-image: url('/nueva-imagen.jpg');
+  background-image: url('/mentoresExpand.png');
   z-index: 10;
 }
 
 /* Tarjeta derecha: se expande hacia la izquierda */
 .card:last-child:hover {
   transform: scale(2, 1) translateX(-25%);
-  background-image: url('/nueva-imagen.jpg');
+  background-image: url('/planesExpand.png');
   z-index: 10;
 }
