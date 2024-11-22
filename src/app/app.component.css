@@ -1,0 +1,7 @@
+.background-container {
+  background-image: url("/fondo1.jpg");
+  background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  min-height: 100vh; /* Asegura que el fondo ocupe toda la pantalla */
+}
