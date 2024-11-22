@@ -62,7 +62,7 @@ export class VerPerfilComponent implements OnInit {
     dialogRef.afterClosed().subscribe((selectedPhoto) => {
       if (selectedPhoto) {
         this.userProfileService
-          .updateProfilePhoto(this.profile.id, selectedPhoto)
+          .updateProfilePhoto(this.profile.userId, selectedPhoto)
           .subscribe({
             next: () => {
               this.profile.photo = selectedPhoto; // Actualiza el modelo del perfil

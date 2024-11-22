@@ -29,7 +29,7 @@ export class ActualizarPerfilComponent implements OnInit {
 
   constructor() {
     this.profileForm = this.fb.group({
-      name: ['', Validators.required],
+      nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
 
     });
@@ -43,6 +43,7 @@ export class ActualizarPerfilComponent implements OnInit {
     const authData = this.authService.getUser();
     const userId = authData?.id;
 
+
     if (userId) {
       this.userProfileService.getUserProfile(userId).subscribe({
         next: (profile) => {
@@ -51,11 +52,9 @@ export class ActualizarPerfilComponent implements OnInit {
         },
         error: () => {
           this.showSnackBar('Error al cargar el perfil del usuario.');
+          this.router.navigate(['/auth/login']);
         }
       });
-    }else {
-      this.showSnackBar('Error al cargar el perfil del usuario.');
-      this.router.navigate(['/auth/login']);
     }
   }
 
@@ -66,7 +65,7 @@ export class ActualizarPerfilComponent implements OnInit {
   onSubmit(): void {
     if (this.profileForm.valid) {
       const updatedData = { ...this.profile, ...this.profileForm.value };
-      this.userProfileService.updateUserProfile(this.profile.id, updatedData).subscribe({
+      this.userProfileService.updateUserProfile(this.profile.userId, updatedData).subscribe({
         next: () => {
           this.showSnackBar('Perfil actualizado exitosamente.');
           this.router.navigate(['/estudiante/perfil']);
