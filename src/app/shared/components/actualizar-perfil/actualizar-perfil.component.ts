@@ -1,18 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsuarioPerfil } from '../../models/usuario-perfil.model';
-import { PerfilUsuarioService } from '../../../core/services/perfil-usuario.service';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import { UsuarioPerfil } from '../../models/user-profile.model';
+import { UserProfileService } from '../../../core/services/user-profile.service';
 import { AuthService } from '../../../core/services/auth.service';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import {Router, RouterLink} from '@angular/router';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-actualizar-perfil',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [MatCardModule, MatSnackBarModule, RouterLink, MatInputModule, MatButtonModule,
+    ReactiveFormsModule, FormsModule],
   templateUrl: './actualizar-perfil.component.html',
   styleUrl: './actualizar-perfil.component.css'
 })
@@ -21,7 +22,7 @@ export class ActualizarPerfilComponent implements OnInit {
   profile!: UsuarioPerfil;
 
   private fb = inject(FormBuilder);
-  private userProfileService = inject(PerfilUsuarioService);
+  private userProfileService = inject(UserProfileService);
   private authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
@@ -52,6 +53,9 @@ export class ActualizarPerfilComponent implements OnInit {
           this.showSnackBar('Error al cargar el perfil del usuario.');
         }
       });
+    }else {
+      this.showSnackBar('Error al cargar el perfil del usuario.');
+      this.router.navigate(['/auth/login']);
     }
   }
 
@@ -65,7 +69,7 @@ export class ActualizarPerfilComponent implements OnInit {
       this.userProfileService.updateUserProfile(this.profile.id, updatedData).subscribe({
         next: () => {
           this.showSnackBar('Perfil actualizado exitosamente.');
-          this.router.navigate(['/customer/profile']);
+          this.router.navigate(['/estudiante/perfil']);
         },
         error: (error) => {
           this.showSnackBar(error.error?.message || 'Error al actualizar el perfil.');
@@ -73,6 +77,7 @@ export class ActualizarPerfilComponent implements OnInit {
       });
     }
   }
+
 
   private showSnackBar(message: string): void {
     this.snackBar.open(message, 'Cerrar', {

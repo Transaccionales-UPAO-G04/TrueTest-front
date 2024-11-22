@@ -2,12 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UsuarioPerfil } from '../../shared/models/usuario-perfil.model';
+import { UsuarioPerfil } from '../../shared/models/user-profile.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PerfilUsuarioService {
+export class UserProfileService {
   private baseURL = `${environment.baseURL}/user/profile`;  // Ajusta el endpoint según tu API
 
   private http = inject(HttpClient);
