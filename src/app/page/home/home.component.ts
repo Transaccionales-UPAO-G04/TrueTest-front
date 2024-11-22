@@ -3,6 +3,7 @@ import { FooterComponent } from "../../shared/components/footer/footer.component
 import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
 import { Router, RouterOutlet } from "@angular/router";
 import { AuthService } from "../../core/services/auth.service"; // Servicio de autenticación
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { AuthService } from "../../core/services/auth.service"; // Servicio de a
   imports: [
     FooterComponent,
     NavbarComponent,
-    RouterOutlet
+    RouterOutlet,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
