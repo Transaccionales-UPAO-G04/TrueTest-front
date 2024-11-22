@@ -17,6 +17,7 @@ body, html {
 
 /* Contenedor del perfil */
 .profile-container {
+  background-color: #b0bec5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,8 +45,8 @@ body, html {
 }
 
 .profile-card p {
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.1rem;
-  color: #333;
   margin: 10px 0;
 }
 
