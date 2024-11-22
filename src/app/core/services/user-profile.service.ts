@@ -21,4 +21,9 @@ export class UserProfileService {
   updateUserProfile(userId: number, profileData: UsuarioPerfil): Observable<UsuarioPerfil> {
     return this.http.put<UsuarioPerfil>(`${this.baseURL}/${userId}`, profileData);
   }
+
+  updateProfilePhoto(userId: number, photo: string): Observable<any> {
+    return this.http.put(`${this.baseURL}/${userId}/foto`, { fotoPerfil: photo });
+  }
+
 }

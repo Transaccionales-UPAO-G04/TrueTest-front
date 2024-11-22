@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuarioPerfil } from '../../models/user-profile.model';
 import { CommonModule } from '@angular/common';
+import { PhotoSelectorComponent } from '../../modals/photo-selector/photo-selector.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-ver-perfil',
@@ -23,6 +27,7 @@ export class VerPerfilComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar); // inyectar matsnackbar
+  private dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -48,6 +53,32 @@ export class VerPerfilComponent implements OnInit {
       this.router.navigate(['/auth/login']);
     }
   }
+
+  openPhotoSelector(): void {
+    const dialogRef = this.dialog.open(PhotoSelectorComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((selectedPhoto) => {
+      if (selectedPhoto) {
+        this.userProfileService
+          .updateProfilePhoto(this.profile.id, selectedPhoto)
+          .subscribe({
+            next: () => {
+              this.profile.photo = selectedPhoto; // Actualiza el modelo del perfil
+              this.showSnackBar('Foto de perfil actualizada correctamente');
+            },
+            error: () => {
+              this.showSnackBar('Error al actualizar la foto de perfil');
+            },
+          });
+      }
+    });
+  }
+
+
+
+
 
   navigateToUpdateProfile(): void {
     this.router.navigate(['/estudiante/perfil/actualizar']);

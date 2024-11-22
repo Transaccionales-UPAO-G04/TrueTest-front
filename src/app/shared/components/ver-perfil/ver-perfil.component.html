@@ -1,12 +1,26 @@
 <div class="container">
-  <h2>Perfil de Usuario</h2>
+  <div class="profile-container">
+    <div class="profile-card">
+      <!-- Foto de Perfil -->
+      <img
+        [src]="profile.photo || '/perfiles/user.png'"
+        alt="Foto de perfil"
+        class="profile-photo"
+      />
+      <button (click)="openPhotoSelector()" class="edit-photo-btn">Editar</button>
 
-  <p><strong>id</strong> {{profile.id}}</p>
-  <p><strong>Nombre:</strong> {{ profile.nombre }}</p>
-  <p><strong>Email:</strong> {{ profile.email }}</p>
+      <!-- Detalles del Usuario -->
+      <div class="profile-details">
+        <p class="profile-info"><strong>id:</strong> {{ profile.id }}</p>
+        <p class="profile-info"><strong>Nombre:</strong> {{ profile.nombre }}</p>
+        <p class="profile-info"><strong>Email:</strong> {{ profile.email }}</p>
+      </div>
 
-  <!-- Botón para actualizar perfil -->
-  <button (click)="navigateToUpdateProfile()" class="update-button">
-    Actualizar Perfil
-  </button>
+      <!-- Botón para actualizar el perfil -->
+      <button class="update-button" (click)="navigateToUpdateProfile()">
+        Actualizar Perfil
+      </button>
+    </div>
+  </div>
+
 </div>

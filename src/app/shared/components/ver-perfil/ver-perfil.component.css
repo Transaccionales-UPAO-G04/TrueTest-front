@@ -1,79 +1,37 @@
-/* Fondo general */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(120deg, #1e88e5, #42a5f5, #90caf9);
-  background-size: 200% 200%;
-  animation: gradientAnimation 8s ease infinite;
-}
-
-/* Animación de fondo */
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Contenedor del perfil */
 .profile-container {
-  background-color: #b0bec5;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background: linear-gradient(to bottom, #42a5f5, #90caf9);
 }
 
-/* Tarjeta del perfil de usuario */
 .profile-card {
-  width: 80%;
-  max-width: 600px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  max-width: 400px;
 }
 
-/* Título y detalles del perfil */
-.profile-card h2 {
-  color: #1e88e5;
-  font-size: 2rem;
-  font-weight: bold;
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   margin-bottom: 20px;
 }
 
-.profile-card p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  margin: 10px 0;
-}
-
-/* Botón de actualización de perfil */
-.update-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: #1e88e5;
+.edit-photo-btn {
+  background: #1e88e5;
+  color: white;
   border: none;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
 }
 
-.update-button:hover {
-  background-color: #1565c0;
-  transform: scale(1.02);
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .profile-card {
-    width: 90%;
-    padding: 20px;
-  }
+.edit-photo-btn:hover {
+  background: #1565c0;
 }

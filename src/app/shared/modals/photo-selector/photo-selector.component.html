@@ -1,0 +1,17 @@
+<div class="photo-selector">
+  <h2>Selecciona tu foto de perfil</h2>
+  <div class="photo-grid">
+    <div
+      class="photo-item"
+      *ngFor="let photo of photos"
+      (click)="select(photo)"
+    >
+      <img
+        [src]="photo"
+        alt="Foto de perfil"
+        class="profile-photo"
+      />
+    </div>
+  </div>
+  <button class="cancel-button" (click)="cancel()">Cancelar</button>
+</div>
