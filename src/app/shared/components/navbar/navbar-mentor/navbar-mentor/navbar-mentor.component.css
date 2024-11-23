@@ -1,0 +1,84 @@
+/* Estilos del Navbar */
+.navbar {
+    width: 100%;
+    background: linear-gradient(to right, #ffdf5d, #00f2fe); /* Fondo degradado azul */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .footer-container {
+    color: #b0bec5;
+    display: flex;
+    width: 100vw;
+    gap: 40px; /* Espaciado entre secciones */
+    box-sizing: border-box; /* Incluye padding y bordes en el tamaño */
+  }
+  
+  
+  .logo {
+    max-width: 100px; /* Tamaño del logo */
+    margin-bottom: 10px;
+  }
+  
+  .logo img {
+    height: 5px; /* Ajusta el tamaño del logo */
+    margin-right: 10px; /* Espaciado entre el logo y el texto */
+  }
+  
+  .navbar-brand {
+    font-family: 'Poppins', sans-serif; /* Fuente personalizada */
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    color: #ffffff; /* Color del texto */
+    display: flex;
+    align-items: center;
+    padding-left: 0; /* Elimina espacio a la izquierda */
+  }
+  
+  /* Estilos del Menú */
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Espaciado entre elementos del menú */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaciado entre ícono y texto */
+    transition: color 0.3s;
+  }
+  
+  .navbar-menu li a:hover {
+    color: #ffdf5d; /* Color al pasar el mouse */
+  }
+  
+  /* Estilos de los Íconos */
+  .icon {
+    font-size: 20px; /* Tamaño del ícono */
+  }
+  
+  /* Íconos personalizados */
+  .icon-prueba:before {
+    content: "\1F4D6"; /* Código Unicode para un ícono */
+  }
+  
+  .icon-mentores:before {
+    content: "\1F464"; /* Código Unicode para un ícono */
+  }
+  
+  .icon-planes:before {
+    content: "\1F4C8"; /* Código Unicode para un ícono */
+  }
+  
+  .icon-login:before {
+    content: "\1F511"; /* Código Unicode para un ícono */
+  }
+  
