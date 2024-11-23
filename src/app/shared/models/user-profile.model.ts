@@ -1,5 +1,5 @@
 export interface UsuarioPerfil {
-    id: number;
+    userId: number;
     email: string;
     role: 'ESTUDIANTE' | 'MENTOR' | null;
     nombre: string;
