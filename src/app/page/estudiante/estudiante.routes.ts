@@ -3,7 +3,7 @@ import { EstudianteLayoutComponent } from './estudiante-layout/estudiante-layout
 import { TestComponent } from './test/test.component';
 import { MentoresComponent } from './mentores/mentores.component';
 import { PlanesComponent } from './planes/planes.component';
-import { VerPerfilComponent } from '../../shared/components/ver-perfil/ver-perfil.component';
+import { EstudianteProfileComponent } from './estudiante-profile/estudiante-profile.component';
 import { ActualizarPerfilComponent } from '../../shared/components/actualizar-perfil/actualizar-perfil.component';
 
 export const estudianteRoutes: Routes = [
@@ -16,8 +16,8 @@ export const estudianteRoutes: Routes = [
         children: [
           { path: 'test', component: TestComponent },
           { path: 'mentores', component: MentoresComponent },
-          { path: 'planes', component: PlanesComponent },         
-          { path: 'perfil', component: VerPerfilComponent },
+          { path: 'planes', component: PlanesComponent },
+          { path: 'perfil', component: EstudianteProfileComponent },
           { path: 'perfil/actualizar', component: ActualizarPerfilComponent },
         ]
       }
