@@ -1,0 +1,12 @@
+<div *ngIf="mentor; else loading">
+  <h2>{{ mentor.nombre }}</h2>
+  <p><strong>Especialidad:</strong> {{ mentor.especialidad }}</p>
+  <p><strong>Experiencia:</strong> {{ mentor.experiencia }}</p>
+  <p><strong>Link Recurso no premium:</strong> {{ mentor.linkRecurso }}</p>
+  <p><strong>Link recurso Premium:</strong> {{ mentor.linkRecursoPremium }}</p>
+  <!-- Puedes agregar más detalles aquí -->
+</div>
+
+<ng-template #loading>
+  <p>Cargando perfil del mentor...</p>
+</ng-template>
