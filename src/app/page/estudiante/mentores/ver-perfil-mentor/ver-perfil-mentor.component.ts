@@ -4,6 +4,7 @@ import {UsuarioPerfil} from "../../../../shared/models/user-profile.model";
 import {EstudianteMentorService} from "../../../../core/services/estudiante-mentor.service";
 import {Mentor} from "../../../../shared/models/estudiante-mentor.model";
 import {ActivatedRoute} from "@angular/router";
+import {Reseña} from "../../../../shared/models/reseña.request.model";
 
 
 @Component({
@@ -17,6 +18,7 @@ export class VerPerfilMentorComponent implements OnInit {
   profile!: UsuarioPerfil;
 
   mentor: Mentor | null = null;  // Objeto para almacenar los detalles del mentor
+  reviews: Reseña[] =[];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +29,7 @@ export class VerPerfilMentorComponent implements OnInit {
     const mentorId = this.route.snapshot.paramMap.get('id');  // Obtener el id del mentor de la URL
     if (mentorId) {
       this.loadMentorProfile(Number(mentorId));  // Cargar los detalles del mentor
+      this.loadMentorReviews(Number(mentorId));
     }
   }
 
@@ -40,6 +43,17 @@ export class VerPerfilMentorComponent implements OnInit {
         console.error('Error al cargar el perfil del mentor', error);
       }
     });
+  }
+  // Cargar las reseñas del mentor
+  loadMentorReviews(mentorId: number): void {
+    this.mentorService.getReseñasByMentorId(mentorId).subscribe(
+      (reviews) => {
+        this.reviews = reviews;
+      },
+      (error) => {
+        console.error('Error al cargar las reseñas del mentor', error);
+      }
+    );
   }
 }
 
