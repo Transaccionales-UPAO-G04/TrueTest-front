@@ -1,7 +1,8 @@
 import { Routes } from "@angular/router";
 import { MentorLayoutComponent } from "./mentor-layout/mentor-layout.component";
 import { VerPerfilComponent } from "../../shared/components/ver-perfil/ver-perfil.component";
-import { ActualizarPerfilComponent } from "../../shared/components/actualizar-perfil/actualizar-perfil.component";
+import { ResenasComponent } from "./resenas/resenas.component";
+import { HorariosComponent } from "./horarios/horarios.component";
 
 
 export const mentorRoutes: Routes = [
@@ -12,8 +13,10 @@ export const mentorRoutes: Routes = [
         path: '',
         component: MentorLayoutComponent,
         children: [
+            { path: '', redirectTo: 'perfil', pathMatch: 'full' },
             { path: 'perfil', component: VerPerfilComponent },
-            { path: 'perfil/actualizar', component: ActualizarPerfilComponent },
+            { path: 'horarios', component: HorariosComponent },
+            { path: 'resenas', component: ResenasComponent },
         ]
       }
 ];

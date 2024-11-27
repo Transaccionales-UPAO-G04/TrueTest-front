@@ -3,4 +3,6 @@ export interface UsuarioPerfil {
     email: string;
     role: 'ESTUDIANTE' | 'MENTOR' | null;
     nombre: string;
+    idEstudiante: number;
+    idMentor: number;
   }

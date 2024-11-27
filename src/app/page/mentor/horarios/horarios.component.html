@@ -1,0 +1,54 @@
+<div class="horario-container">
+    <h2>Gestión de Horarios</h2>
+  
+    <!-- Lista de horarios -->
+    <div class="horarios-list">
+      <h3>Horarios Disponibles</h3>
+      <table class="horarios-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Hora de la sesión</th>
+            <th>Enlace</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let horario of horarios">
+            <td>{{ horario.fecha }}</td>
+            <td>{{ horario.horaSesion }}</td>
+            <td><a href="{{ horario.linkSesionPublica }}" target="_blank">Ver enlace</a></td>
+            <td>
+              <!-- Botón Editar -->
+  <button *ngIf="horario.idHorario" (click)="editHorario(horario.idHorario!, horario)" class="edit-button">Editar</button>
+  
+  <!-- Botón Eliminar -->
+  <button *ngIf="horario.idHorario" (click)="deleteHorario(horario.idHorario!)" class="delete-button">Eliminar</button>
+  
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Formulario para crear un nuevo horario -->
+    <div class="new-horario-form">
+      <h3>Crear Nuevo Horario</h3>
+      <form (ngSubmit)="createHorario()">
+        <div class="form-group">
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha" [(ngModel)]="newHorario.fecha" name="fecha" required>
+        </div>
+        <div class="form-group">
+          <label for="horaSesion">Hora de la sesión:</label>
+          <input type="time" id="horaSesion" [(ngModel)]="newHorario.horaSesion" name="horaSesion" required>
+        </div>
+        <div class="form-group">
+          <label for="linkSesionPublica">Enlace público de la sesión:</label>
+          <input type="url" id="linkSesionPublica" [(ngModel)]="newHorario.linkSesionPublica" name="linkSesionPublica" required>
+        </div>
+        <button type="submit" class="submit-button">Crear Horario</button>
+      </form>
+    </div>
+  </div>
+  
