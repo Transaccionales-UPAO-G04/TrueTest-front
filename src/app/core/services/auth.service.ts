@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../../shared/models/auth.response.model';
 import { RegisterRequest } from '../../shared/models/register.request.model';
 import { RegisterResponse } from '../../shared/models/register.response.model';
+import {UsuarioPerfil} from "../../shared/models/user-profile.model";
 
 @Injectable({
   providedIn: 'root'
@@ -56,9 +57,11 @@ export class AuthService {
     return this.storageService.getAuthData();
   }
 
+
   // Obtener el rol del usuario
   getUserRole(): string | null {
     const authData = this.storageService.getAuthData();
     return authData ? authData.role : null;
   }
+
 }

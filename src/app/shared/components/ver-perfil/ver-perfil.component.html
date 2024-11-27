@@ -1,7 +1,9 @@
 <div class="container">
-  <h2>Perfil de Usuario</h2>
+  <div class=profile-card>
+    <!-- Mostrar mensaje de carga si el perfil aún no ha sido cargado -->
+    <div *ngIf="!profile">Cargando perfil...</div>
 
-  <p><strong>id:</strong> {{profile.userId}}</p>
+  <p><strong>id:</strong> {{profile.userId}} </p>
   <p><strong>Nombre:</strong> {{ profile.nombre }}</p>
   <p><strong>Email:</strong> {{ profile.email }}</p>
 
@@ -9,4 +11,5 @@
   <button (click)="navigateToUpdateProfile()" class="update-button">
     Actualizar Perfil
   </button>
+  </div>
 </div>
