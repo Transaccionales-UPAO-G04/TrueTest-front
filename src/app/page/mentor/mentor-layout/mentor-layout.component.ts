@@ -15,7 +15,7 @@ export class MentorLayoutComponent {
   constructor(private router: Router) {}
 
   navigateTo(route: string): void {
-    this.router.navigate([`/estudiante/${route}`]); // Agregar la ruta completa
+    this.router.navigate([`/mentor/${route}`]); // Agregar la ruta completa
   }
   
 }

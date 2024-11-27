@@ -12,16 +12,10 @@
         <ul class="navbar-nav ms-auto">
           <ng-container *ngIf="isAuthenticated; else loggedOut">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/mentor/horarios">Ver horarios</a>
+              <a class="nav-link" routerLink="/mentor/horarios">Horarios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/estudiante/mentores">Reservas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/estudiante/planes">Reseñas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/estudiante/planes">Recursos</a>
+              <a class="nav-link" routerLink="/mentor/reseñas">Reseñas</a>
             </li>
             <li class="nav-item dropdown">
               <a
