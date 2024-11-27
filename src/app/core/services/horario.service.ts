@@ -24,20 +24,20 @@ export class HorarioService {
   }
 
   // Actualizar un horario
-  updateHorario(idHorario: number, horario: Horario): Observable<Horario> {
-    const mentorId = this.authService.getUser()?.id; // Obtener la ID del mentor desde el AuthService
-    if (!mentorId) {
-      throw new Error("El mentor no está autenticado.");
-    }
-    return this.http.put<Horario>(`${this.baseURL}/${idHorario}/mentor/${mentorId}`, horario); // Usa mentorId aquí
+updateHorario(idHorario: number, horario: Horario, idMentor: number): Observable<Horario> {
+  if (!idMentor) {
+    throw new Error("El mentor no está autenticado o no tiene un mentor asignado.");
   }
+  return this.http.put<Horario>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`, horario); // Usa idMentor aquí
+}
+
 
   // Eliminar un horario
-  deleteHorario(idHorario: number): Observable<void> {
-    const mentorId = this.authService.getUser()?.id; // Obtener la ID del mentor desde el AuthService
-    if (!mentorId) {
-      throw new Error("El mentor no está autenticado.");
-    }
-    return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${mentorId}`); // Usa mentorId aquí
+deleteHorario(idHorario: number, idMentor: number): Observable<void> {
+  if (!idMentor) {
+    throw new Error("El mentor no está autenticado o no tiene un mentor asignado.");
   }
+  return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`); // Usa idMentor aquí
+}
+
 }

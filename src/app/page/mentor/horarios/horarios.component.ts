@@ -27,7 +27,6 @@ export class HorariosComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     private perfilUsuarioService: PerfilUsuarioService,
-
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +45,8 @@ export class HorariosComponent implements OnInit {
                 console.error('Error al cargar horarios:', err);
               }
             });
+          } else {
+            this.snackBar.open('No se encontró un mentor asociado al usuario', 'Cerrar', { duration: 3000 });
           }
         },
         error: (err) => {
@@ -54,7 +55,6 @@ export class HorariosComponent implements OnInit {
       });
     }
   }
-  
 
   createHorario(): void {
     const user = this.authService.getUser();
@@ -86,53 +86,105 @@ export class HorariosComponent implements OnInit {
       });
     }
   }
-  
-  
 
   // Método para editar un horario existente
-  editHorario(idHorario: number, updatedHorario: Horario): void {
-    const mentor = this.authService.getUser();
-    if (mentor) {
-      const idMentor = mentor.id;
-      this.horarioService.updateHorario(idHorario, updatedHorario).subscribe(
-        (horario) => {
-          const index = this.horarios.findIndex(h => h.idHorario === idHorario);
-          if (index !== -1) {
-            this.horarios[index] = horario;
+// Método para editar un horario existente
+editHorario(horario: Horario): void {
+  if (horario && horario.idHorario) {
+    const user = this.authService.getUser();
+    if (user) {
+      this.perfilUsuarioService.getMentorOrStudentId(user.id).subscribe({
+        next: (idMentor) => {
+          if (idMentor) {
+            // Verifica si el idHorario es válido antes de hacer la llamada
+            if (horario.idHorario !== undefined && horario.idHorario !== null) {
+              // Ahora que tienes el ID del mentor, puedes actualizar el horario
+              this.horarioService.updateHorario(horario.idHorario, horario, idMentor).subscribe(
+                (horarioActualizado) => {
+                  const index = this.horarios.findIndex(h => h.idHorario === horario.idHorario);
+                  if (index !== -1) {
+                    this.horarios[index] = horarioActualizado;
+                  }
+                  this.snackBar.open('Horario actualizado con éxito', 'Cerrar', { duration: 3000 });
+                  this.cancelEditing(); // Limpiar el formulario de edición
+                },
+                (error) => {
+                  console.error('Error al actualizar horario:', error);
+                  this.snackBar.open('Error al actualizar horario', 'Cerrar', { duration: 3000 });
+                }
+              );
+            } else {
+              console.error('ID de horario no válido');
+              this.snackBar.open('ID de horario no válido', 'Cerrar', { duration: 3000 });
+            }
+          } else {
+            console.error('No se encontró un mentor asociado al usuario');
+            this.snackBar.open('No se encontró un mentor asociado al usuario', 'Cerrar', { duration: 3000 });
           }
-          this.snackBar.open('Horario actualizado con éxito', 'Cerrar', { duration: 3000 });
         },
-        (error) => {
-          console.error('Error al actualizar horario:', error);
-          this.snackBar.open('Error al actualizar horario', 'Cerrar', { duration: 3000 });
+        error: (err) => {
+          console.error('Error al obtener el ID del mentor:', err);
+          this.snackBar.open('Error al obtener el ID del mentor', 'Cerrar', { duration: 3000 });
         }
-      );
+      });
+    } else {
+      console.error('Usuario no encontrado');
+      this.snackBar.open('Usuario no encontrado', 'Cerrar', { duration: 3000 });
     }
+  } else {
+    console.error('Horario no válido');
+    this.snackBar.open('Horario no válido', 'Cerrar', { duration: 3000 });
   }
+}
+
+
+  
 
   // Método para eliminar un horario
-  deleteHorario(idHorario: number): void {
-    const mentor = this.authService.getUser();
-    if (mentor) {
-      const idMentor = mentor.id;
-      this.horarioService.deleteHorario(idHorario).subscribe(
-        () => {
-          this.horarios = this.horarios.filter(h => h.idHorario !== idHorario);
-          this.snackBar.open('Horario eliminado con éxito', 'Cerrar', { duration: 3000 });
+deleteHorario(idHorario: number): void {
+  if (idHorario) {
+    const user = this.authService.getUser();
+    if (user) {
+      this.perfilUsuarioService.getMentorOrStudentId(user.id).subscribe({
+        next: (idMentor) => {
+          if (idMentor) {
+            this.horarioService.deleteHorario(idHorario, idMentor).subscribe(
+              () => {
+                this.horarios = this.horarios.filter(h => h.idHorario !== idHorario);
+                this.snackBar.open('Horario eliminado con éxito', 'Cerrar', { duration: 3000 });
+              },
+              (error) => {
+                console.error('Error al eliminar horario:', error);
+                this.snackBar.open('Error al eliminar horario', 'Cerrar', { duration: 3000 });
+              }
+            );
+          } else {
+            this.snackBar.open('No se encontró un mentor asociado al usuario', 'Cerrar', { duration: 3000 });
+          }
         },
-        (error) => {
-          console.error('Error al eliminar horario:', error);
-          this.snackBar.open('Error al eliminar horario', 'Cerrar', { duration: 3000 });
+        error: (err) => {
+          console.error('Error al obtener el ID del mentor:', err);
+          this.snackBar.open('Error al obtener el ID del mentor', 'Cerrar', { duration: 3000 });
         }
-      );
+      });
+    }
+  } else {
+    console.error('ID de horario no válido');
+    this.snackBar.open('ID de horario no válido', 'Cerrar', { duration: 3000 });
+  }
+}
+
+
+  startEditing(horario: Horario): void {
+    if (horario) {
+      this.editableHorario = { ...horario }; // Clonamos para no afectar directamente el objeto original
+    } else {
+      console.error('Horario no válido para edición');
+      this.snackBar.open('Horario no válido para edición', 'Cerrar', { duration: 3000 });
     }
   }
 
-  startEditing(horario: Horario): void {
-    this.editableHorario = { ...horario }; // Clonamos para no afectar directamente el objeto original
-  }
   cancelEditing(): void {
     this.editableHorario = null; // Limpia el modelo temporal
   }
-    
 }
