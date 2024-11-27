@@ -35,24 +35,33 @@ export class LoginComponent {
     return this.loginForm.controls[control].hasError(error);
   }
 
-  onSubmit(){
-    if(this.loginForm.invalid){
+  onSubmit() {
+    if (this.loginForm.invalid) {
       return;
-    };
-
+    }
+  
     const credentials: AuthRequest = this.loginForm.value;
-
+  
     this.authService.login(credentials).subscribe({
       next: () => {
         this.showSnackBar('Inicio de sesión exitoso');
-        //falta crear la ruta
-        this.router.navigate(['/estudiante']);
+        
+        // Obtener el rol del usuario
+        const role = this.authService.getUserRole();
+  
+        // Redirigir según el rol
+        if (role === 'ESTUDIANTE') {
+          this.router.navigate(['/estudiante']);
+        } else if (role === 'MENTOR') {
+          this.router.navigate(['/mentor']);
+        } else {
+          this.showSnackBar('Rol no reconocido. Contacte al administrador.');
+        }
       },
       error: () => {
         this.showSnackBar('Error en el inicio de sesión. Por favor, intenta de nuevo.');
       },
     });
-
   }
 
   private showSnackBar(message:string): void{

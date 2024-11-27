@@ -1,17 +1,17 @@
-import { ChangeDetectorRef, Component, inject, NgZone, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { Router } from '@angular/router';
+import { Component, inject, NgZone, OnInit } from '@angular/core';
+import { AuthService } from '../../../../../core/services/auth.service';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbar-mentor',
   standalone: true,
-  imports: [RouterLink, CommonModule],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  imports: [CommonModule, RouterLink, RouterModule],
+  templateUrl: './navbar-mentor.component.html',
+  styleUrl: './navbar-mentor.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarMentorComponent implements OnInit{
   private authService = inject(AuthService);
   private zone = inject(NgZone);
   private router = inject(Router);

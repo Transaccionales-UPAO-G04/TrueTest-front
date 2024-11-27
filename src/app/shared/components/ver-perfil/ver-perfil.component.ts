@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PerfilUsuarioService } from '../../../core/services/perfil-usuario.service';
+import { UserProfileService } from '../../../core/services/user-profile.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuarioPerfil } from '../../models/usuario-perfil.model';
+import { UsuarioPerfil } from '../../models/user-profile.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,12 +15,14 @@ import { CommonModule } from '@angular/common';
 })
 export class VerPerfilComponent implements OnInit {
   profile!: UsuarioPerfil;
+  //operador de asercion de no nulo.
+  //en resumen, ! le dice al compilador que ignore las posibles verificaciones de null o undefined
 
 
-  private userProfileService = inject(PerfilUsuarioService);
+  private userProfileService = inject(UserProfileService);
   private authService = inject(AuthService);
   private router = inject(Router);
-  private snackBar = inject(MatSnackBar);
+  private snackBar = inject(MatSnackBar); // inyectar matsnackbar
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -41,6 +43,9 @@ export class VerPerfilComponent implements OnInit {
           this.showSnackBar('Error al cargar el perfil');
         }
       });
+    }else{
+      this.showSnackBar('Error al cargar el perfil');
+      this.router.navigate(['/auth/login']);
     }
   }
 

@@ -1,0 +1,99 @@
+/* Fondo general */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: white; /* Fondo blanco */
+  }
+  
+  /* Contenedor de la página */
+  .layout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #333; /* Aseguramos que el texto sea oscuro para contraste */
+  }
+  
+  /* Estilo para el título */
+  .layout-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1e88e5; /* Título en azul */
+    font-weight: bold;
+  }
+  
+  /* Estilo para el párrafo */
+  .layout-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555; /* Color del texto en gris oscuro */
+  }
+  
+  /* Contenedor de los botones */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Estilo de los botones */
+  .nav-button {
+    position: relative;
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 40px; /* Botones más altos */
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+  }
+  
+  /* Imagen dentro de los botones */
+  .nav-button .button-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3; /* Reducir opacidad de la imagen para mayor visibilidad */
+    z-index: -1; /* Imagen detrás del texto */
+  }
+  
+  /* Efecto hover en los botones */
+  .nav-button:hover {
+    background-color: #1565c0;
+    transform: scale(1.05);
+  }
+  
+  /* Estilo para el botón deshabilitado */
+  .nav-button:disabled {
+    background-color: #b0bec5;
+  }
+  
+  /* Responsividad para dispositivos pequeños */
+  @media (max-width: 992px) {
+    .button-container {
+      width: 100%;
+    }
+  
+    .nav-button {
+      font-size: 1.2rem; /* Ajustar tamaño de fuente en pantallas pequeñas */
+      padding: 35px; /* Ajustar altura de los botones en pantallas pequeñas */
+    }
+  }
+  

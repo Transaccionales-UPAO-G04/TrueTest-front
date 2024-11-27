@@ -1,0 +1,26 @@
+<div *ngIf="mentor; else loading" class="mentor-profile">
+  <h2>{{ mentor.nombre }}</h2>
+  <p><strong>Especialidad:</strong> {{ mentor.especialidad }}</p>
+  <p><strong>Experiencia:</strong> {{ mentor.experiencia }}</p>
+  <p><strong>Link Recurso no premium:</strong> {{ mentor.linkRecurso }}</p>
+  <p><strong>Link recurso Premium:</strong> {{ mentor.linkRecursoPremium }}</p>
+
+
+</div>
+
+<!-- Sección de reseñas -->
+<div *ngIf="reviews.length > 0" >
+  <h3>Reseñas:</h3>
+  <div *ngFor="let review of reviews" class="reseña">
+    <p><strong>Nombre:</strong> {{ review.nombreEstudiante }}</p>
+    <p><strong>Calificación:</strong> {{ review.calificacion }}</p>
+    <p><strong>Comentario:</strong> {{ review.texto }}</p>
+  </div>
+</div>
+<div *ngIf="reviews.length === 0">
+  <p>No hay reseñas disponibles para este mentor.</p>
+</div>
+
+<ng-template #loading>
+  <p>Cargando perfil del mentor...</p>
+</ng-template>
