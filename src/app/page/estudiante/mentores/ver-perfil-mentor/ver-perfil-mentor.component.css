@@ -1,0 +1,64 @@
+/* Estilos para el contenedor principal */
+.mentor-profile-container {
+  display: flex;
+  justify-content: center;  /* Centrar el contenido */
+  padding: 20px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  align-items: center;
+}
+
+/* Estilos para el perfil del mentor */
+.mentor-profile {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+}
+
+/* Título del perfil (nombre del mentor) */
+.mentor-profile h2 {
+  font-size: 2rem;
+  color: #1e88e5;
+  margin-bottom: 20px;
+}
+
+/* Estilo de los detalles del mentor */
+.mentor-profile p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.mentor-profile strong {
+  color: #1e88e5;
+}
+
+/* Estilo para el mensaje de carga */
+.loading-message {
+  font-size: 1.2rem;
+  color: #42a5f5;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsivo: para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .mentor-profile {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .mentor-profile h2 {
+    font-size: 1.6rem;
+  }
+
+  .mentor-profile p {
+    font-size: 1rem;
+  }
+}
