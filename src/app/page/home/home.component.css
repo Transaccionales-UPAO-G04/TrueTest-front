@@ -102,3 +102,189 @@
   background-image: url('/planesExpand.png');
   z-index: 10;
 }
+
+/*Separacion*/
+/* Estilo para la sección de introducción */
+/* General */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* Sección de introducción */
+.custom-intro {
+  background: linear-gradient(90deg, #4e79e0, #6fa6ff);
+  color: white;
+}
+
+.custom-intro h1 {
+  font-size: 2.5rem;
+}
+
+.custom-intro p {
+  font-size: 1.2rem;
+}
+
+.custom-intro img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de nosotros */
+#about {
+  background-color: #ffffff;
+  padding: 50px 10px;
+}
+
+#about h2 {
+  color: #4e79e0;
+}
+
+#about p {
+  font-size: 1.1rem;
+}
+
+/* Sección de características */
+#feature {
+  padding: 50px 15px;
+}
+
+#feature h2 {
+  color: #4e79e0;
+}
+
+.feature-icon {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+#feature h4 {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+#feature p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Sección de testimonios */
+/* Sección de testimonios */
+/* Sección de testimonios */
+#testimonials {
+  padding: 50px 15px;
+  background-color: #ffffff;
+}
+
+#testimonials h2 {
+  color: #4e79e0;
+  margin-bottom: 30px;
+}
+
+.testimonial {
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonial img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px; /* Espacio entre la imagen y el texto */
+}
+
+.testimonial p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px; /* Espacio debajo del texto */
+}
+
+blockquote-footer {
+  font-style: italic;
+  color: #777;
+}
+
+.testimonial .content {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+
+
+/* Sección de equipo */
+#team {
+  padding: 50px 15px;
+}
+
+#team h2 {
+  color: #4e79e0;
+}
+
+#team .rounded-circle {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#team h4 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+#team p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Botones y enlaces */
+a {
+  color: #4e79e0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #4e79e0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6fa6ff;
+}
