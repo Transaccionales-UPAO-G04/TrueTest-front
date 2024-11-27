@@ -8,11 +8,12 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from "@angular/material/card";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-actualizar-perfil',
   standalone: true,
-  imports: [MatCardModule, MatSnackBarModule, RouterLink, MatInputModule, MatButtonModule,
+  imports: [MatCardModule, MatSnackBarModule, CommonModule, MatInputModule, MatButtonModule,
     ReactiveFormsModule, FormsModule],
   templateUrl: './actualizar-perfil.component.html',
   styleUrl: './actualizar-perfil.component.css'

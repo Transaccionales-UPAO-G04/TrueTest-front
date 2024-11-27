@@ -16,4 +16,8 @@ export class EstudianteMentorService {
   getAllMentors(): Observable<Mentor[]> {
     return this.http.get<Mentor[]>(this.baseURL);
   }
+  // Obtener un mentor específico por ID
+  getMentorById(mentorId: number): Observable<Mentor> {
+    return this.http.get<Mentor>(`${this.baseURL}/${mentorId}`);
+  }
 }
