@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Mentor } from '../../shared/models/estudiante-mentor.model';
 import { Observable } from 'rxjs';
+import {Reseña} from "../../shared/models/reseña.response.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 
 export class EstudianteMentorService {
   private baseURL = `${environment.baseURL}/api/mentores`;  // Ajusta la URL según el endpoint real
+  private baseURL2 = `${environment.baseURL}`;
 
   constructor(private http: HttpClient) { }
 
@@ -20,4 +22,10 @@ export class EstudianteMentorService {
   getMentorById(mentorId: number): Observable<Mentor> {
     return this.http.get<Mentor>(`${this.baseURL}/${mentorId}`);
   }
+
+// Obtener reseñas de un mentor
+  getReseñasByMentorId(mentorId: number): Observable<Reseña[]> {
+    return this.http.get<Reseña[]>(`${this.baseURL2}/api/reseñas/${mentorId}/`);
+  }
+
 }

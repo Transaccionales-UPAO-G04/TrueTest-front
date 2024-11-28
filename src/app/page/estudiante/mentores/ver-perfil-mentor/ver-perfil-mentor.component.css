@@ -47,6 +47,17 @@
   margin-top: 20px;
 }
 
+.reseña {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+}
+
 /* Responsivo: para pantallas más pequeñas */
 @media (max-width: 768px) {
   .mentor-profile {
