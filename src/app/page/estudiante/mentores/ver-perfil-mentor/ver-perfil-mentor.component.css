@@ -1,75 +1,137 @@
-/* Estilos para el contenedor principal */
-.mentor-profile-container {
+/* Contenedor general para el perfil del mentor y los horarios */
+.mentor-horarios-container {
   display: flex;
-  justify-content: center;  /* Centrar el contenido */
-  padding: 20px;
-  background-color: #f4f4f4;
-  min-height: 100vh;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;  /* Alinea los elementos en la parte superior */
+  gap: 20px;  /* Espacio entre los cuadros */
+  margin: 20px 0;
+  flex-wrap: wrap;  /* Permite que los elementos se ajusten en pantallas pequeñas */
 }
 
-/* Estilos para el perfil del mentor */
+/* Cuadro de perfil del mentor */
 .mentor-profile {
+  background: rgba(255, 255, 255, 0.9);
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 48%;  /* Establece un ancho mínimo para que no se deforme */
+  max-width: 48%;  /* Limita el ancho máximo para que no se expanda demasiado */
 }
 
-/* Título del perfil (nombre del mentor) */
+/* Títulos y párrafos del cuadro del mentor */
 .mentor-profile h2 {
-  font-size: 2rem;
   color: #1e88e5;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.mentor-profile p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Cuadro de horarios del mentor */
+.horarios-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 48%;  /* Establece un ancho mínimo para que no se deforme */
+  max-width: 48%;  /* Limita el ancho máximo para que no se expanda demasiado */
+}
+
+/* Títulos del cuadro de horarios */
+.horarios-container h3 {
+  color: #1e88e5;
+  font-size: 1.8rem;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-/* Estilo de los detalles del mentor */
-.mentor-profile p {
-  font-size: 1.1rem;
-  color: #333;
+/* Lista de horarios */
+.horarios-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horarios-list li {
+  background: rgba(66, 165, 245, 0.1);
+  border-left: 5px solid #1e88e5;
+  padding: 10px 15px;
   margin-bottom: 10px;
-  line-height: 1.6;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.mentor-profile strong {
+.horarios-list li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.horarios-list li strong {
   color: #1e88e5;
+  font-weight: bold;
 }
 
-/* Estilo para el mensaje de carga */
-.loading-message {
-  font-size: 1.2rem;
-  color: #42a5f5;
+.horarios-list li span {
+  color: #333;
+  margin-top: 5px;
+  font-size: 1rem;
+  display: block;
+}
+
+.no-horarios-message {
   text-align: center;
+  color: #90caf9;
+  font-weight: bold;
+  font-size: 1.2rem;
   margin-top: 20px;
 }
 
-.reseña {
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  width: 100%;
+/* Estilo para mostrar que se está cargando */
+.loading {
   text-align: center;
-  margin: 20px;
+  color: #42a5f5;
+  font-size: 1.2rem;
 }
 
-/* Responsivo: para pantallas más pequeñas */
+/* Responsividad */
 @media (max-width: 768px) {
-  .mentor-profile {
-    padding: 15px;
-    max-width: 90%;
+  .mentor-horarios-container {
+    flex-direction: column; /* Apilar los cuadros en pantallas pequeñas */
+    align-items: center; /* Centra los cuadros cuando están apilados */
   }
 
-  .mentor-profile h2 {
-    font-size: 1.6rem;
+  .mentor-profile,
+  .horarios-container {
+    min-width: 100%; /* Asegura que los cuadros ocupen todo el ancho disponible */
+    max-width: 100%; /* Asegura que los cuadros no se expandan más allá del 100% */
   }
+}
 
-  .mentor-profile p {
-    font-size: 1rem;
-  }
+/* Estilo para el botón de regresar */
+.back-button {
+  background-color: #1e88e5; /* Azul */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #1565c0; /* Azul más oscuro al pasar el mouse */
+}
+
+/* Para que el botón se vea bien alineado */
+.back-button {
+  display: inline-block;
+  margin: 20px 0;
 }
