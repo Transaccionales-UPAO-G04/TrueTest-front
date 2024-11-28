@@ -142,4 +142,20 @@ a:hover {
     width: 100%;
     padding: 30px;
   }
+
+  /* Estilo para el enlace de recuperación de contraseña */
+  .login-form p {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .login-form p a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .login-form p a:hover {
+    text-decoration: underline;
+  }
+
 }

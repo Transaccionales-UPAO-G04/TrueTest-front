@@ -61,4 +61,8 @@ export class AuthService {
     const authData = this.storageService.getAuthData();
     return authData ? authData.role : null;
   }
+
+  sendPasswordResetMail(email: string): Observable<void> {
+    return this.http.post<void>(`${this.baseURL}/sendMail`, email);
+  }
 }
