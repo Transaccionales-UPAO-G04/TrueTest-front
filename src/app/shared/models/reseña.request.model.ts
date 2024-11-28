@@ -1,6 +1,4 @@
-export interface Reseña{
-  idReseña: Number;
-  nombreEstudiante: string;
+export interface ReseñaDTO {
   texto: string;
   calificacion: number;
 }
