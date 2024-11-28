@@ -40,4 +40,19 @@ deleteHorario(idHorario: number, idMentor: number): Observable<void> {
   return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`); // Usa idMentor aquí
 }
 
+// Registrar un estudiante en un horario
+registerStudentToHorario(idHorario: number, idEstudiante: number): Observable<Horario> {
+  return this.http.post<Horario>(`${this.baseURL}/${idHorario}/estudiante/${idEstudiante}`, {});
+}
+
+// Desregistrar un estudiante de un horario (por el estudiante)
+unregisterStudentFromHorarioByStudent(idHorario: number, idEstudiante: number): Observable<void> {
+  return this.http.delete<void>(`${this.baseURL}/${idHorario}/estudiante/${idEstudiante}`);
+}
+
+// Desregistrar un estudiante de un horario (por el mentor)
+unregisterStudentFromHorarioByMentor(idHorario: number, idEstudiante: number, idMentor: number): Observable<void> {
+  return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}/estudiante/${idEstudiante}`);
+}
+
 }

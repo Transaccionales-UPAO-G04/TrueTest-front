@@ -135,3 +135,67 @@
   display: inline-block;
   margin: 20px 0;
 }
+
+/* Contenedor de los botones, alineados abajo */
+.horarios-list li {
+  display: flex;
+  flex-direction: column;  /* Apilar los elementos en columna */
+  justify-content: space-between;  /* Distribuir espacio entre el contenido */
+  background: rgba(66, 165, 245, 0.1);
+  border-left: 5px solid #1e88e5;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 180px;  /* Altura fija para cada item */
+}
+
+.horarios-list li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de los botones */
+.horario-buttons {
+  margin-top: auto;  /* Esto empuja los botones hacia abajo */
+  display: flex;
+  justify-content: space-between;  /* Alinea los botones a la izquierda y derecha */
+  gap: 10px;  /* Espacio entre los botones */
+  width: 100%;  /* Los botones ocupan todo el ancho disponible */
+}
+
+/* Botón Registrar - Azul */
+.button-registrar {
+  padding: 8px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  background-color: #2196F3;  /* Azul */
+  color: white;
+}
+
+.button-registrar:hover {
+  background-color: #1976D2;  /* Azul más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón Desregistrar - Azul */
+.button-desregistrar {
+  padding: 8px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  background-color: #2196F3;  /* Azul */
+  color: white;
+}
+
+.button-desregistrar:hover {
+  background-color: #1976D2;  /* Azul más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
