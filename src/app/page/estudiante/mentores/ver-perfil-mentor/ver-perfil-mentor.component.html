@@ -19,11 +19,27 @@
   <div class="horarios-container">
     <h3>Horarios disponibles:</h3>
     <ul class="horarios-list">
-      <li *ngFor="let horario of horarios">
+      <li *ngFor="let horario of horarios; let i = index">
         <strong>Fecha:</strong> <span>{{ horario.fecha }}</span>
         <strong>Hora:</strong> <span>{{ horario.horaSesion }}</span>
         <strong>Link:</strong>
         <a [href]="horario.linkSesionPublica" target="_blank" class="horario-link">{{ horario.linkSesionPublica }}</a>
+<!-- Mostrar ambos botones -->
+<!-- Botón para Registrar siempre visible -->
+<!-- Registrar -->
+<button 
+  *ngIf="horario.idHorario" 
+  (click)="registerStudent(horario.idHorario)">
+  Registrar
+</button>
+
+<!-- Desregistrar -->
+<button 
+  *ngIf="horario.idHorario" 
+  (click)="unregisterStudent(horario.idHorario)">
+  Desregistrar
+</button>
+
       </li>
     </ul>
     <div *ngIf="horarios.length === 0" class="no-horarios-message">
@@ -31,9 +47,6 @@
     </div>
   </div>
 </div>
-
-
-
 <!-- Sección de reseñas -->
 <div *ngIf="reviews.length > 0" >
   <h3>Reseñas:</h3>

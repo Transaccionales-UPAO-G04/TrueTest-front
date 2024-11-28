@@ -11,6 +11,8 @@ import { Reseña } from "../../../../shared/models/reseña.response.model";
 import { ReseñaDTO } from "../../../../shared/models/reseña.request.model";  // Asegúrate de que este DTO esté bien definido
 import { HorarioService } from '../../../../core/services/horario.service';
 import { Horario } from '../../../../shared/models/horario.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-ver-perfil-mentor',
@@ -26,6 +28,8 @@ export class VerPerfilMentorComponent implements OnInit {
   idMentor: number = 0;  // Inicializa con un valor por defecto
   idEstudiante: number = 0;  // Inicializa con un valor por defecto
   horarios: Horario[] = []; // Nueva variable para almacenar los horarios
+  studentRegisteredToHorario: boolean[] = [];  // Array para saber si el estudiante está registrado a cada horario
+
 
   private router = inject(Router);
 
@@ -37,6 +41,8 @@ export class VerPerfilMentorComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private perfilUsuario: UserProfileService,
+    private snackBar: MatSnackBar  // Inyección de MatSnackBar
+
   ) {
     // Inicializa el formulario de reseña en el constructor
     this.reviewForm = this.fb.group({
@@ -101,12 +107,58 @@ export class VerPerfilMentorComponent implements OnInit {
     this.horarioService.getHorarios(mentorId).subscribe({
       next: (horarios) => {
         this.horarios = horarios;
+        this.studentRegisteredToHorario = new Array(horarios.length).fill(false);  // Inicializa el array con 'false' para cada horario
       },
       error: (error) => {
         console.error('Error al cargar los horarios del mentor', error);
       }
     });
   }
+  
+// Registrar al estudiante en un horario
+registerStudent(horarioId: number | undefined): void {
+  if (horarioId !== undefined) {
+    // Lógica de registro
+    this.horarioService.registerStudentToHorario(horarioId, this.idEstudiante).subscribe({
+      next: (response) => {
+        console.log('Estudiante registrado en el horario:', response);
+        this.studentRegisteredToHorario[horarioId] = true;
+        // Mostrar mensaje de éxito con MatSnackBar
+        this.snackBar.open('¡Te has registrado correctamente al horario!', 'Cerrar', {
+          duration: 3000,  // Duración del mensaje en milisegundos
+          verticalPosition: 'top',  // Posición vertical del mensaje
+          horizontalPosition: 'center'  // Posición horizontal del mensaje
+        });
+      },
+      error: (error) => {
+        console.error('Error al registrar estudiante:', error);
+      }
+    });
+  }
+}
+
+
+unregisterStudent(horarioId: number | undefined): void {
+  if (horarioId !== undefined) {
+    // Lógica de desregistro
+    this.horarioService.unregisterStudentFromHorarioByStudent(horarioId, this.idEstudiante).subscribe({
+      next: (response) => {
+        console.log('Estudiante desregistrado del horario:', response);
+        this.studentRegisteredToHorario[horarioId] = false;
+        // Mostrar mensaje de éxito con MatSnackBar
+        this.snackBar.open('Cancelaste el registro de horario con exito!', 'Cerrar', {
+          duration: 3000,  // Duración del mensaje en milisegundos
+          verticalPosition: 'top',  // Posición vertical del mensaje
+          horizontalPosition: 'center'  // Posición horizontal del mensaje
+        });
+      },
+      error: (error) => {
+        console.error('Error al desregistrar estudiante:', error);
+      }
+    });
+  }
+}
+
 
   // Enviar reseña
   onSubmit(): void {
