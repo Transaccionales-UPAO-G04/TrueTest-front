@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, RouterModule} from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserProfileService} from "../../../../core/services/user-profile.service";
 import { AuthService } from "../../../../core/services/auth.service";
@@ -9,6 +9,8 @@ import { EstudianteMentorService } from "../../../../core/services/estudiante-me
 import { ReseñaService } from "../../../../core/services/reseña.service";
 import { Reseña } from "../../../../shared/models/reseña.response.model";
 import { ReseñaDTO } from "../../../../shared/models/reseña.request.model";  // Asegúrate de que este DTO esté bien definido
+import { HorarioService } from '../../../../core/services/horario.service';
+import { Horario } from '../../../../shared/models/horario.model';
 
 @Component({
   selector: 'app-ver-perfil-mentor',
@@ -23,14 +25,18 @@ export class VerPerfilMentorComponent implements OnInit {
   reviewForm: FormGroup;  // Formulario de reseña
   idMentor: number = 0;  // Inicializa con un valor por defecto
   idEstudiante: number = 0;  // Inicializa con un valor por defecto
+  horarios: Horario[] = []; // Nueva variable para almacenar los horarios
+
+  private router = inject(Router);
 
   constructor(
     private route: ActivatedRoute,
     private mentorService: EstudianteMentorService,
     private reseñaService: ReseñaService,
+    private horarioService: HorarioService, // Inyecta el servicio de horarios
     private fb: FormBuilder,
     private authService: AuthService,
-    private perfilUsuario: UserProfileService
+    private perfilUsuario: UserProfileService,
   ) {
     // Inicializa el formulario de reseña en el constructor
     this.reviewForm = this.fb.group({
@@ -63,6 +69,8 @@ export class VerPerfilMentorComponent implements OnInit {
     // Cargar los detalles del mentor y las reseñas
     this.loadMentorProfile(this.idMentor);
     this.loadMentorReviews(this.idMentor);
+    this.loadMentorHorarios(this.idMentor); // Llama al método para cargar los horarios
+
   }
 
   // Cargar los detalles del mentor
@@ -89,6 +97,17 @@ export class VerPerfilMentorComponent implements OnInit {
     );
   }
 
+  loadMentorHorarios(mentorId: number): void {
+    this.horarioService.getHorarios(mentorId).subscribe({
+      next: (horarios) => {
+        this.horarios = horarios;
+      },
+      error: (error) => {
+        console.error('Error al cargar los horarios del mentor', error);
+      }
+    });
+  }
+
   // Enviar reseña
   onSubmit(): void {
     if (this.reviewForm.invalid) {
@@ -111,6 +130,10 @@ export class VerPerfilMentorComponent implements OnInit {
           console.error('Error al crear reseña:', error);
         }
       );
+  }
+
+  goBack(): void {
+    this.router.navigate(['/estudiante/mentores']);  // Redirige a la página de mentores
   }
 
 }
