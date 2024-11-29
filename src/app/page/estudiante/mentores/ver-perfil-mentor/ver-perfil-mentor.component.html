@@ -1,13 +1,52 @@
-<div *ngIf="mentor; else loading" class="mentor-profile">
-  <h2>{{ mentor.nombre }}</h2>
-  <p><strong>Especialidad:</strong> {{ mentor.especialidad }}</p>
-  <p><strong>Experiencia:</strong> {{ mentor.experiencia }}</p>
-  <p><strong>Link Recurso no premium:</strong> {{ mentor.linkRecurso }}</p>
-  <p><strong>Link recurso Premium:</strong> {{ mentor.linkRecursoPremium }}</p>
+<!-- Botón Regresar -->
+<button class="back-button" (click)="goBack()">Regresar</button>
 
+<div *ngIf="mentor; else loading" class="mentor-horarios-container">
+  <!-- Perfil del Mentor -->
+  <div class="mentor-profile">
+    <h2>{{ mentor.nombre }}</h2>
+    <p><strong>Especialidad:</strong> {{ mentor.especialidad }}</p>
+    <p><strong>Experiencia:</strong> {{ mentor.experiencia }}</p>
+    <p><strong>Link Recurso no premium:</strong>
+      <a [href]="mentor.linkRecurso" target="_blank" class="mentor-link">{{ mentor.linkRecurso }}</a>
+    </p>
+    <p><strong>Link recurso Premium:</strong>
+      <a [href]="mentor.linkRecursoPremium" target="_blank" class="mentor-link">{{ mentor.linkRecursoPremium }}</a>
+    </p>
+  </div>
 
+  <!-- Horarios del Mentor -->
+  <div class="horarios-container">
+    <h3>Horarios disponibles:</h3>
+    <ul class="horarios-list">
+      <li *ngFor="let horario of horarios; let i = index">
+        <strong>Fecha:</strong> <span>{{ horario.fecha }}</span>
+        <strong>Hora:</strong> <span>{{ horario.horaSesion }}</span>
+        <strong>Link:</strong>
+        <a [href]="horario.linkSesionPublica" target="_blank" class="horario-link">{{ horario.linkSesionPublica }}</a>
+<!-- Mostrar ambos botones -->
+<!-- Botón para Registrar siempre visible -->
+<!-- Registrar -->
+<button 
+  *ngIf="horario.idHorario" 
+  (click)="registerStudent(horario.idHorario)">
+  Registrar
+</button>
+
+<!-- Desregistrar -->
+<button 
+  *ngIf="horario.idHorario" 
+  (click)="unregisterStudent(horario.idHorario)">
+  Desregistrar
+</button>
+
+      </li>
+    </ul>
+    <div *ngIf="horarios.length === 0" class="no-horarios-message">
+      No hay horarios disponibles para este mentor.
+    </div>
+  </div>
 </div>
-
 <!-- Sección de reseñas -->
 <div *ngIf="reviews.length > 0" >
   <h3>Reseñas:</h3>
@@ -19,6 +58,30 @@
 </div>
 <div *ngIf="reviews.length === 0">
   <p>No hay reseñas disponibles para este mentor.</p>
+</div>
+
+<!-- Formulario para agregar una nueva reseña -->
+<div class="reviews-section">
+  <div *ngFor="let review of reviews">
+    <p>{{ review.texto }} - Calificación: {{ review.calificacion }}</p>
+  </div>
+</div>
+
+<div class="add-review">
+  <h3>Agregar una Reseña</h3>
+  <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="texto">Texto:</label>
+      <textarea id="texto" formControlName="texto"></textarea>
+    </div>
+
+    <div>
+      <label for="calificacion">Calificación (1-5):</label>
+      <input type="number" id="calificacion" formControlName="calificacion" min="1" max="5">
+    </div>
+
+    <button type="submit" [disabled]="reviewForm.invalid">Enviar Reseña</button>
+  </form>
 </div>
 
 <ng-template #loading>

@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Mentor } from '../../shared/models/estudiante-mentor.model';
 import { Observable } from 'rxjs';
-import {Reseña} from "../../shared/models/reseña.request.model";
+import {Reseña} from "../../shared/models/reseña.response.model";
 
 @Injectable({
   providedIn: 'root'
