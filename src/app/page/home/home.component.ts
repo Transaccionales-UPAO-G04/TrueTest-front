@@ -13,7 +13,7 @@ import { AuthService } from "../../core/services/auth.service"; // Servicio de a
     RouterOutlet
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']  // Cambié styleUrl por styleUrls, ya que Angular usa styleUrls para importar archivos de estilo
 })
 export class HomeComponent {
 
