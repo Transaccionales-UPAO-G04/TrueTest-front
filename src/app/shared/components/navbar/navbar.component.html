@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar">
   <div class="container">
     <a href="#" class="navbar-brand">
-      <img src="logo.jpg" alt="TrueTest Logo" class="logo" />
+      <img src="logonb.png" alt="TrueTest Logo" class="logo" />
     </a>
 
   </div>
@@ -12,14 +12,21 @@
       <ul class="navbar-nav ms-auto">
         <ng-container *ngIf="isAuthenticated; else loggedOut">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/estudiante/test">Test</a>
+            <a  class="nav-link" routerLink="/estudiante/test">
+              <i class="fas fa-file-lines"></i> Test <!-- Ícono para Test -->
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/estudiante/mentores">Mentores</a>
+            <a  class="nav-link" routerLink="/estudiante/mentores">
+              <i class="fas fa-user-tie"></i> Mentores <!-- Ícono para Mentores -->
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/estudiante/planes">Planes</a>
+            <a  class="nav-link" routerLink="/estudiante/planes">
+              <i class="fa-solid fa-hand-holding-dollar"></i> Planes <!-- Ícono para Planes -->
+            </a>
           </li>
+
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -52,4 +59,5 @@
         </ng-template>
       </ul>
     </div>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
 </nav>

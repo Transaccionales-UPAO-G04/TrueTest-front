@@ -1,41 +1,95 @@
 /* Estilos del Navbar */
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   background: linear-gradient(to right, #4facfe, #00f2fe); /* Fondo degradado azul */
   color: #fff;
-  padding: 10px 20px;
-  display: flex;
+  padding: 0px 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Josefin Sans', sans-serif; /* Aplica la fuente Josefin Sans */
 }
 
-.footer-container {
-  color: #b0bec5;
-  display: flex;
-  width: 100vw;
-  gap: 40px; /* Espaciado entre secciones */
-  box-sizing: border-box; /* Incluye padding y bordes en el tamaño */
+.navbar-nav .nav-link {
+  font-family: 'Josefin Sans', sans-serif; /* Aplica la fuente Josefin Sans */
+  font-weight: 600; /* SemiBold */
+  font-size: 40px; /* Tamaño de fuente */
+  letter-spacing: 15%; /* Espaciado entre letras */
+  color: white; /* Color de la letra */
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  line-height: 1; /* Asegura que el texto y el icono estén alineados correctamente */
+  text-shadow: 0 0 1px #fff; /* Borde de las letras (stroke) en blanco */
+  transition: color 0.3s, text-shadow 0.3s; /* Transición suave para color y efecto hover */
 }
 
+.navbar-nav .nav-link:hover {
+  color: #000000; /* Color al pasar el mouse */
+  text-shadow: 0 0 3px #000000; /* Resaltado al pasar el mouse */
+}
+
+/* Estilos para el botón de "Registrarse" */
+.btn-outline-primary {
+  background-color: #FBC97F; /* Fondo inicial */
+  color: #fff; /* Color de texto blanco */
+  border: 1px solid #FBC97F; /* Borde del botón */
+  font-family: 'Josefin Sans', sans-serif; /* Aplica la fuente */
+  font-weight: 600; /* SemiBold */
+  font-size: 25px; /* Tamaño de fuente */
+  letter-spacing: 15%; /* Espaciado entre letras */
+  padding: 5px 10px;; /* Espaciado dentro del botón */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
 
 .logo {
-  max-width: 100px; /* Tamaño del logo */
-  margin-bottom: 10px;
+  max-width: 110px; /* Tamaño del logo */
+  margin-bottom: 0px;
 }
 
-.logo img {
-  height: 5px; /* Ajusta el tamaño del logo */
-  margin-right: 10px; /* Espaciado entre el logo y el texto */
+.btn-outline-primary:hover {
+  background-color: #F9AF41; /* Color al pasar el cursor */
+  color: #fff; /* Mantener color blanco */
 }
 
-.navbar-brand {
-  font-family: 'Poppins', sans-serif; /* Fuente personalizada */
-  font-size: 1.5rem; /* Tamaño del texto */
-  font-weight: bold; /* Negrita */
-  color: #ffffff; /* Color del texto */
-  display: flex;
-  align-items: center;
-  padding-left: 0; /* Elimina espacio a la izquierda */
+/* Estilos para los botones de "Registrarse" y "Iniciar sesión" */
+.navbar-nav .nav-item {
+  display: inline-block; /* Esto asegura que los elementos de la lista estén en la misma línea */
+  margin: 0 10px; /* Ajusta el espaciado entre los botones */
 }
+
+.btn-outline-primary:active {
+  background-color: #69CDF4; /* Color al hacer click */
+  color: #fff; /* Mantener color blanco */
+}
+
+/* Estilos para el botón de "Iniciar sesión" */
+.btn-primary {
+  display: inline-block;
+  background-color: #71E685; /* Fondo inicial */
+  color: #fff; /* Color de texto blanco */
+  border: 1px solid #71E685; /* Borde del botón */
+  font-family: 'Josefin Sans', sans-serif; /* Aplica la fuente */
+  font-weight: 600; /* SemiBold */
+  font-size: 25px; /* Tamaño de fuente */
+  letter-spacing: 15%; /* Espaciado entre letras */
+  padding: 5px 10px; /* Espaciado dentro del botón */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.btn-primary:hover {
+  background-color: #25D443; /* Color al pasar el cursor */
+  color: #fff; /* Mantener color blanco */
+}
+
+.btn-primary:active {
+  background-color: #69CDF4; /* Color al hacer click */
+  color: #fff; /* Mantener color blanco */
+}
+
+
+
 
 /* Estilos del Menú */
 .navbar-menu {
@@ -60,24 +114,10 @@
   color: #ffdf5d; /* Color al pasar el mouse */
 }
 
-/* Estilos de los Íconos */
-.icon {
-  font-size: 20px; /* Tamaño del ícono */
-}
-
-/* Íconos personalizados */
-.icon-prueba:before {
-  content: "\1F4D6"; /* Código Unicode para un ícono */
-}
-
-.icon-mentores:before {
-  content: "\1F464"; /* Código Unicode para un ícono */
-}
-
-.icon-planes:before {
-  content: "\1F4C8"; /* Código Unicode para un ícono */
-}
-
-.icon-login:before {
-  content: "\1F511"; /* Código Unicode para un ícono */
+/* Estilo para los íconos */
+.navbar-nav .nav-link i {
+  font-size: 38px; /* Tamaño adecuado para los íconos */
+  line-height: 1; /* Alineación vertical adecuada para los iconos */
+  margin-bottom: 4px; /* Ajuste fino para alinear el icono con el texto */
+  transition: transform 0.2s; /* Efecto suave en los íconos */
 }
