@@ -1,5 +1,5 @@
-<div class="container">
-  <h2>Perfil de Usuario</h2>
+<div id="ruta" class="container" xmlns:id="http://www.w3.org/1999/xhtml">
+  <h1>Perfil de Usuario</h1>
 
   <div class="profile-container">
     <div class="profile-card">
@@ -14,16 +14,21 @@
             <i class="fa-solid fa-pencil"></i>
           </button>
         </div>
-        <h2 class="profile-name">{{ profile.nombre }}</h2>
-        <p class="user-id">ID: {{ profile.userId }}</p>
+        <!--INformacion del perfil-->
+
+        <div class="profile-details">
+           <h2 class="profile-name">{{ profile.nombre }}</h2>
+           <p class="user-id">ID: {{ profile.userId }}</p>
+
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+          <!-- Botón para actualizar perfil -->
+          <button (click)="navigateToUpdateProfile()" class="update-button">
+            Editar informacion
+          </button>
+         </div>
       </div>
 
 
-
-      <!-- Información del perfil -->
-      <div class="profile-details">
-        <p><strong>Email:</strong> {{ profile.email }}</p>
-      </div>
 
       <!-- Modal de selección de foto -->
       <div *ngIf="photoModalOpen" class="photo-selection-modal">
@@ -39,13 +44,4 @@
   </div>
 
 
-
-  <p><strong>id:</strong> {{profile.userId}}</p>
-  <p><strong>Nombre:</strong> {{ profile.nombre }}</p>
-  <p><strong>Email:</strong> {{ profile.email }}</p>
-
-  <!-- Botón para actualizar perfil -->
-  <button (click)="navigateToUpdateProfile()" class="update-button">
-    Actualizar Perfil
-  </button>
 </div>
