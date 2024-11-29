@@ -1,0 +1,13 @@
+mat-form-field {
+  width: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+button {
+  min-width: 100px;
+}
