@@ -1,6 +1,45 @@
 <div class="container">
   <h2>Perfil de Usuario</h2>
 
+  <div class="profile-container">
+    <div class="profile-card">
+      <!-- Foto de perfil -->
+      <div class="profile-header">
+        <div class="profile-photo-container">
+          <!-- Imagen de perfil con URL predeterminada si no hay foto -->
+          <img [src]="profile.fotoPerfil ? profile.fotoPerfil : 'https://cdn-icons-png.flaticon.com/512/1154/1154987.png'" alt="Foto de perfil" class="profile-photo">
+
+          <!-- Botón para cambiar la foto, con el ícono de lápiz -->
+          <button (click)="openPhotoSelection()">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+        </div>
+        <h2 class="profile-name">{{ profile.nombre }}</h2>
+        <p class="user-id">ID: {{ profile.userId }}</p>
+      </div>
+
+
+
+      <!-- Información del perfil -->
+      <div class="profile-details">
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+      </div>
+
+      <!-- Modal de selección de foto -->
+      <div *ngIf="photoModalOpen" class="photo-selection-modal">
+        <div class="photo-selection-container">
+          <h3>Selecciona una foto</h3>
+          <div class="photo-options">
+            <img *ngFor="let photo of availablePhotos" [src]="photo" alt="Foto de perfil" (click)="selectPhoto(photo)" class="photo-option">
+          </div>
+          <button mat-button (click)="closePhotoSelection()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <p><strong>id:</strong> {{profile.userId}}</p>
   <p><strong>Nombre:</strong> {{ profile.nombre }}</p>
   <p><strong>Email:</strong> {{ profile.email }}</p>

@@ -27,4 +27,9 @@ export class UserProfileService {
       map(profile => profile.idMentor || profile.idEstudiante) // Retorna idMentor si existe, de lo contrario idEstudiante
     );
   }
+  // Método para actualizar la foto de perfil
+  updateProfilePhoto(userId: number, fotoPerfil: string): Observable<any> {
+    const body = { fotoPerfil: fotoPerfil }; // Cuerpo de la solicitud con la URL de la imagen
+    return this.http.put(`${this.baseURL}/${userId}/foto`, body);
+  }
 }

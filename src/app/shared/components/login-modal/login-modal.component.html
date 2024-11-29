@@ -1,0 +1,21 @@
+<div mat-dialog-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Ingrese su correo electrónico">
+      <mat-error *ngIf="controlHasError('email', 'required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="controlHasError('email', 'email')">Introduzca un correo válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Ingrese su contraseña">
+      <mat-error *ngIf="controlHasError('password', 'required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <div class="modal-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+      <button mat-button (click)="closeModal.emit()">Cerrar</button>
+    </div>
+  </form>
+</div>
