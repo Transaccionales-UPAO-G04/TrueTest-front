@@ -24,7 +24,21 @@
         <strong>Hora:</strong> <span>{{ horario.horaSesion }}</span>
         <strong>Link:</strong>
         <a [href]="horario.linkSesionPublica" target="_blank" class="horario-link">{{ horario.linkSesionPublica }}</a>
+<!-- Mostrar ambos botones ESTA BIEN EL MERGE? -->
+<!-- Botón para Registrar siempre visible -->
+<!-- Registrar -->
+<button 
+  *ngIf="horario.idHorario" 
+  (click)="registerStudent(horario.idHorario)">
+  Registrar
+</button>
 
+<!-- Desregistrar -->
+<button 
+  *ngIf="horario.idHorario" 
+  (click)="unregisterStudent(horario.idHorario)">
+  Cancelar
+</button>
         <!-- Botones de Registro -->
         <div class="horario-buttons">
           <button

@@ -13,46 +13,38 @@ export class HorarioService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  // Obtener los horarios del mentor
+  // Obtener horarios por mentor
   getHorarios(idMentor: number): Observable<Horario[]> {
     return this.http.get<Horario[]>(`${this.baseURL}/mentor/${idMentor}`);
   }
 
-  // Crear un nuevo horario
-  createHorario(horario: any, mentorId: number): Observable<any> {
-    return this.http.post(`${this.baseURL}/${mentorId}`, horario); // Usa mentorId correctamente
+  // Crear un horario
+  createHorario(horario: Horario, idMentor: number): Observable<Horario> {
+    return this.http.post<Horario>(`${this.baseURL}/${idMentor}`, horario);
   }
 
   // Actualizar un horario
-updateHorario(idHorario: number, horario: Horario, idMentor: number): Observable<Horario> {
-  if (!idMentor) {
-    throw new Error("El mentor no está autenticado o no tiene un mentor asignado.");
+  updateHorario(idHorario: number, horario: Horario, idMentor: number): Observable<Horario> {
+    return this.http.put<Horario>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`, horario);
   }
-  return this.http.put<Horario>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`, horario); // Usa idMentor aquí
-}
-
 
   // Eliminar un horario
-deleteHorario(idHorario: number, idMentor: number): Observable<void> {
-  if (!idMentor) {
-    throw new Error("El mentor no está autenticado o no tiene un mentor asignado.");
+  deleteHorario(idHorario: number, idMentor: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`);
   }
-  return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}`); // Usa idMentor aquí
-}
 
-// Registrar un estudiante en un horario
-registerStudentToHorario(idHorario: number, idEstudiante: number): Observable<Horario> {
-  return this.http.post<Horario>(`${this.baseURL}/${idHorario}/estudiante/${idEstudiante}`, {});
-}
+  // Registrar un estudiante en un horario
+  registerStudentToHorario(idHorario: number, idEstudiante: number): Observable<Horario> {
+    return this.http.post<Horario>(`${this.baseURL}/${idHorario}/estudiante/${idEstudiante}`, {});
+  }
 
-// Desregistrar un estudiante de un horario (por el estudiante)
-unregisterStudentFromHorarioByStudent(idHorario: number, idEstudiante: number): Observable<void> {
-  return this.http.delete<void>(`${this.baseURL}/${idHorario}/estudiante/${idEstudiante}`);
-}
+  // Desregistrar un estudiante de un horario (por el estudiante)
+  unregisterStudentFromHorarioByStudent(idHorario: number, idEstudiante: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/${idHorario}/estudiante/${idEstudiante}`);
+  }
 
-// Desregistrar un estudiante de un horario (por el mentor)
-unregisterStudentFromHorarioByMentor(idHorario: number, idEstudiante: number, idMentor: number): Observable<void> {
-  return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}/estudiante/${idEstudiante}`);
-}
-
+  // Desregistrar un estudiante de un horario (por el mentor)
+  unregisterStudentFromHorarioByMentor(idHorario: number, idEstudiante: number, idMentor: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/${idHorario}/mentor/${idMentor}/estudiante/${idEstudiante}`);
+  }
 }

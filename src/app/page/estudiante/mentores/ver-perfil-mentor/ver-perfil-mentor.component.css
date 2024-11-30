@@ -26,9 +26,10 @@ body {
 .mentor-horarios-container {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  align-items: flex-start; /* Alinea los elementos en la parte superior */
+  gap: 20px; /* Espacio entre los cuadros */
+  margin: 20px 0;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
 }
 
 /* Perfil del Mentor */
@@ -38,8 +39,9 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 48%;
-  max-width: 48%;
+  min-width: 48%; /* Establece un ancho mínimo para que no se deforme */
+  max-width: 48%; /* Limita el ancho máximo para que no se expanda demasiado */
+
 }
 
 .mentor-profile h2 {
@@ -70,8 +72,19 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
+
   min-width: 48%;
   max-width: 48%;
+
+}
+
+/* Títulos del cuadro de horarios */
+.horarios-container h3 {
+  color: #1e88e5;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+
 }
 
 .horarios-list {
@@ -83,10 +96,13 @@ body {
 .horarios-list li {
   background: rgba(66, 165, 245, 0.1);
   border-left: 5px solid #1e88e5;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+  padding: 20px 15px; /* Aumenta el padding interno */
+  margin-bottom: 20px; /* Aumenta el espacio entre los horarios */
   border-radius: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column; /* Apila el contenido dentro del horario */
+  gap: 10px; /* Espacio entre los elementos internos del horario */
 }
 
 .horarios-list li:hover {
@@ -127,7 +143,8 @@ body {
   background-color: #1976D2;
 }
 
-/* Mensaje cuando no hay horarios */
+/* Mensaje de no disponibilidad de horarios */
+
 .no-horarios-message {
   text-align: center;
   color: #90caf9;
@@ -152,6 +169,7 @@ body {
   margin-bottom: 10px;
 }
 
+/*mensaje sin horario*/
 .no-reviews-message {
   text-align: center;
   color: #ccc;
@@ -181,6 +199,15 @@ body {
   border: 1px solid #ddd;
   font-size: 1rem;
   margin-bottom: 10px;
+
+/* Contenedor de los botones, alineados abajo */
+.horario-buttons {
+  margin-top: auto; /* Esto empuja los botones hacia abajo */
+  display: flex;
+  justify-content: space-between; /* Alinea los botones a la izquierda y derecha */
+  gap: 10px; /* Espacio entre los botones */
+  width: 100%; /* Los botones ocupan todo el ancho disponible */
+
 }
 
 .add-review input {
@@ -205,6 +232,17 @@ body {
 
 .add-review button:disabled {
   background-color: #90caf9;
+
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  background-color: #2196F3; /* Azul */
+  color: white;
+}
+
+.button-registrar:hover {
+  background-color: #1976D2; /* Azul más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .add-review button:hover:not(:disabled) {
@@ -222,6 +260,16 @@ body {
 .star {
   color: #ccc;
   transition: color 0.3s ease;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  background-color: #2196F3; /* Azul */
+  color: white;
+}
+
+.button-desregistrar:hover {
+  background-color: #1976D2; /* Azul más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .star.filled {

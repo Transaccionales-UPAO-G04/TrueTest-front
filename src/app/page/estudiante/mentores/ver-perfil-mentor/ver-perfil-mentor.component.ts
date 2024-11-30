@@ -110,24 +110,65 @@ export class VerPerfilMentorComponent implements OnInit {
       }
     });
   }
+  
+// Registrar al estudiante en un horario
+registerStudent(horarioId: number | undefined): void {
+  if (horarioId !== undefined) {
+    this.horarioService.registerStudentToHorario(horarioId, this.idEstudiante).subscribe({
+      next: (response) => {
+        console.log('Estudiante registrado en el horario:', response);
+        this.studentRegisteredToHorario[horarioId] = true;
+        // Mostrar mensaje de éxito
+        this.snackBar.open('¡Te has registrado correctamente al horario!', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+      },
+      error: (error) => {
+        console.error('Error al registrar estudiante:', error);
+        // Mostrar notificación de error
+        this.snackBar.open('No se pudo completar el registro al horario. El horario debe estar ocupado o ya estas registrado.', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+      }
+    });
+  }
+}
 
-  // Método para registrar al estudiante en un horario
-  registerStudent(horarioId: number | undefined): void {
-    if (horarioId !== undefined) {
-      this.horarioService.registerStudentToHorario(horarioId, this.idEstudiante).subscribe({
-        next: (response) => {
-          console.log('Estudiante registrado en el horario:', response);
-          this.studentRegisteredToHorario[horarioId] = true;
-          this.snackBar.open('¡Te has registrado correctamente al horario!', 'Cerrar', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center'
-          });
-        },
-        error: (error) => {
-          console.error('Error al registrar estudiante:', error);
-        }
-      });
+// Desregistrar al estudiante de un horario
+unregisterStudent(horarioId: number | undefined): void {
+  if (horarioId !== undefined) {
+    this.horarioService.unregisterStudentFromHorarioByStudent(horarioId, this.idEstudiante).subscribe({
+      next: (response) => {
+        console.log('Estudiante desregistrado del horario:', response);
+        this.studentRegisteredToHorario[horarioId] = false;
+        // Mostrar mensaje de éxito
+        this.snackBar.open('Cancelaste el registro del horario con éxito.', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+      },
+      error: (error) => {
+        console.error('Error al desregistrar estudiante:', error);
+        // Mostrar notificación de error
+        this.snackBar.open('No se pudo cancelar el registro del horario. Seguro aun no te registraste', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+      }
+    });
+  }
+}
+
+  // Enviar reseña
+  onSubmit(): void {
+    if (this.reviewForm.invalid) {
+      return;
     }
   }
 
