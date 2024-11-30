@@ -1,8 +1,8 @@
 <!-- Botón Regresar -->
 <button class="back-button" (click)="goBack()">Regresar</button>
 
+<!-- Perfil del Mentor -->
 <div *ngIf="mentor; else loading" class="mentor-horarios-container">
-  <!-- Perfil del Mentor -->
   <div class="mentor-profile">
     <h2>{{ mentor.nombre }}</h2>
     <p><strong>Especialidad:</strong> {{ mentor.especialidad }}</p>
@@ -24,7 +24,7 @@
         <strong>Hora:</strong> <span>{{ horario.horaSesion }}</span>
         <strong>Link:</strong>
         <a [href]="horario.linkSesionPublica" target="_blank" class="horario-link">{{ horario.linkSesionPublica }}</a>
-<!-- Mostrar ambos botones -->
+<!-- Mostrar ambos botones ESTA BIEN EL MERGE? -->
 <!-- Botón para Registrar siempre visible -->
 <!-- Registrar -->
 <button 
@@ -39,7 +39,21 @@
   (click)="unregisterStudent(horario.idHorario)">
   Cancelar
 </button>
-
+        <!-- Botones de Registro -->
+        <div class="horario-buttons">
+          <button
+            *ngIf="horario.idHorario"
+            (click)="registerStudent(horario.idHorario)"
+            class="button-registrar">
+            Registrar
+          </button>
+          <button
+            *ngIf="horario.idHorario"
+            (click)="unregisterStudent(horario.idHorario)"
+            class="button-desregistrar">
+            Desregistrar
+          </button>
+        </div>
       </li>
     </ul>
     <div *ngIf="horarios.length === 0" class="no-horarios-message">
@@ -47,26 +61,7 @@
     </div>
   </div>
 </div>
-<!-- Sección de reseñas -->
-<div *ngIf="reviews.length > 0" >
-  <h3>Reseñas:</h3>
-  <div *ngFor="let review of reviews" class="reseña">
-    <p><strong>Nombre:</strong> {{ review.nombreEstudiante }}</p>
-    <p><strong>Calificación:</strong> {{ review.calificacion }}</p>
-    <p><strong>Comentario:</strong> {{ review.texto }}</p>
-  </div>
-</div>
-<div *ngIf="reviews.length === 0">
-  <p>No hay reseñas disponibles para este mentor.</p>
-</div>
-
 <!-- Formulario para agregar una nueva reseña -->
-<div class="reviews-section">
-  <div *ngFor="let review of reviews">
-    <p>{{ review.texto }} - Calificación: {{ review.calificacion }}</p>
-  </div>
-</div>
-
 <div class="add-review">
   <h3>Agregar una Reseña</h3>
   <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
@@ -76,13 +71,47 @@
     </div>
 
     <div>
-      <label for="calificacion">Calificación (1-5):</label>
-      <input type="number" id="calificacion" formControlName="calificacion" min="1" max="5">
+      <label for="calificacion">Calificación:</label>
+      <div class="stars-container">
+        <span
+          *ngFor="let star of stars; let i = index"
+          class="star"
+          [ngClass]="{'filled': i < rating}"
+          (click)="setRating(i + 1)">
+          &#9733; <!-- Aquí estamos utilizando el ícono de estrella -->
+        </span>
+      </div>
+      <input type="hidden" formControlName="calificacion" [value]="rating">
     </div>
 
     <button type="submit" [disabled]="reviewForm.invalid">Enviar Reseña</button>
   </form>
 </div>
+
+<!-- Mostrar las reseñas anteriores -->
+<div *ngIf="reviews.length > 0" class="reviews-container">
+  <h3>Reseñas:</h3>
+  <div *ngFor="let review of reviews" class="reseña">
+    <p><strong>Nombre:</strong> {{ review.nombreEstudiante }}</p>
+    <p><strong>Comentario:</strong> {{ review.texto }}</p>
+
+    <!-- Mostrar estrellas según la calificación -->
+    <div class="stars">
+      <ng-container *ngFor="let star of stars; let i = index">
+        <span class="star" [class.filled]="i < review.calificacion">&#9733;</span>
+      </ng-container>
+    </div>
+
+    <p><strong>Calificación:</strong> {{ review.calificacion }} estrellas</p>
+  </div>
+</div>
+
+<!-- Mensaje si no hay reseñas -->
+<div *ngIf="reviews.length === 0" class="no-reviews-message">
+  No hay reseñas disponibles para este mentor.
+</div>
+
+
 
 <ng-template #loading>
   <p>Cargando perfil del mentor...</p>
