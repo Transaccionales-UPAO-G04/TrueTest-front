@@ -1,32 +1,190 @@
-<div class="test-container">
-    <div class="test-card">
-      <!-- Sección de bienvenida -->
-      <div class="test-image">
-        <div class="image-overlay-text">
-          <h2>Prueba Vocacional</h2>
-          <p>Descubre tu mejor camino profesional</p>
+<div class="min-h-screen bg-gray-50 py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+    <!-- Debugging Information -->
+    <div *ngIf="!result && answers.length > 0" class="bg-yellow-100 p-4 mb-4 rounded">
+      <h3 class="font-bold text-yellow-800 mb-2">Debugging Information</h3>
+      <p>Answers submitted: {{answers.length}} / {{questions.length}}</p>
+      <details>
+        <summary>View Raw Answers</summary>
+        <pre class="text-xs bg-white p-2 rounded">{{ answers | json }}</pre>
+      </details>
+    </div>
+
+    <!-- Introducción -->
+    <ng-container *ngIf="showIntro">
+      <div class="bg-white rounded-lg shadow-lg p-8 text-center" @slideInOut>
+        <h1 class="text-4xl font-bold text-gray-900 mb-6">Test Vocacional Interactivo</h1>
+        <div class="space-y-6">
+          <p class="text-lg text-gray-600">
+            Descubre tu vocación a través de nuestro test interactivo. 
+            Responderás {{questions.length}} preguntas diseñadas para ayudarte a encontrar tu camino profesional.
+          </p>
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-blue-800 mb-2">¿Cómo funciona?</h3>
+            <ul class="text-left text-blue-700 space-y-2">
+              <li>✓ {{questions.length}} preguntas divididas en secciones</li>
+              <li>✓ Análisis detallado de tus respuestas</li>
+              <li>✓ Recomendaciones personalizadas</li>
+              <li>✓ Información sobre carreras y materias</li>
+            </ul>
+          </div>
+          <button 
+            class="px-8 py-4 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+            (click)="startTest()">
+            Comenzar Test
+          </button>
         </div>
       </div>
-  
-      <!-- Sección de formulario -->
-      <div class="test-form">
-        <h2>Iniciar Prueba</h2>
-        <form>
-          <!-- Campo de selección de categoría -->
-          <div class="form-field">
-            <label for="category">Selecciona una categoría:</label>
-            <select id="category" name="category">
-              <option value="tecnologia">Tecnología</option>
-              <option value="arte">Arte</option>
-              <option value="ciencias">Ciencias</option>
-              <!-- Agrega más opciones según sea necesario -->
-            </select>
+    </ng-container>
+
+    <!-- Test -->
+    <ng-container *ngIf="!showIntro && !result">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Test Vocacional</h1>
+        <div class="flex justify-center items-center space-x-4">
+          <p class="text-gray-600">
+            Pregunta {{currentStep + 1}} de {{questions.length}}
+          </p>
+          <span class="text-gray-400">|</span>
+          <p class="text-gray-600">
+            Tiempo: {{formatTime(timeSpent)}}
+          </p>
+        </div>
+      </div>
+
+      <div class="question-container" @slideInOut>
+        <div class="progress-section">
+          <div class="progress-bar-bg">
+            <div class="progress-bar" [style.width.%]="getProgress()"></div>
           </div>
-  
-          <!-- Botón de inicio -->
-          <button type="submit" class="submit-button">Comenzar Prueba</button>
-        </form>
+        </div>
+
+        <div class="question-content">
+          <div class="question-image" *ngIf="questions[currentStep].image">
+            <img [src]="questions[currentStep].image" [alt]="questions[currentStep].text" 
+                 class="rounded-lg shadow-md mb-4">
+          </div>
+
+          <p class="question-text">
+            {{questions[currentStep].text}}
+          </p>
+
+          <p class="text-sm text-gray-600 italic mb-4" *ngIf="questions[currentStep].description">
+            {{questions[currentStep].description}}
+          </p>
+
+          <div class="buttons-grid">
+            <button
+              *ngFor="let value of [5,4,3,2,1]"
+              class="option-button"
+              [class.selected]="getAnswerPuntuacion(currentStep) === value"
+              (click)="handleAnswer(value); selectedFeedback()">
+              <span class="option-number">{{value}}</span>
+            </button>
+          </div>
+
+          <div class="legend">
+            <span>Totalmente en desacuerdo</span>
+            <span>En desacuerdo</span>
+            <span>Neutral</span>
+            <span>De acuerdo</span>
+            <span>Totalmente de acuerdo</span>
+          </div>
+        </div>
+
+        <!-- Navegación de preguntas -->
+        <div class="navigation mt-6 flex justify-between">
+          <button 
+            class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg text-lg font-semibold hover:bg-gray-400 transition-colors"
+            (click)="previousQuestion()"
+            [disabled]="currentStep === 0">
+            Anterior
+          </button>
+          <button 
+            class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg text-lg font-semibold hover:bg-gray-400 transition-colors"
+            (click)="nextQuestion()"
+            [disabled]="currentStep === questions.length - 1">
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Resultados -->
+    <div *ngIf="result" class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl mx-auto" @slideInOut>
+      <!-- Debugging Section -->
+      <div class="bg-green-50 p-4 mb-4 rounded" *ngIf="result.error">
+        <h3 class="font-bold text-red-800">Error en el cálculo de resultados</h3>
+        <p>{{ result.error }}</p>
+      </div>
+
+      <h2 class="text-3xl font-bold mb-6 text-center">¡Tu resultado está listo!</h2>
+
+      <div class="space-y-8">
+        <div class="text-center">
+          <div [class]="result.color + ' p-8 rounded-full inline-block mx-auto mb-4'">
+            <i [class]="'fas fa-' + result.icon + ' text-4xl text-white'"></i>
+          </div>
+
+          <h3 class="text-2xl font-semibold mb-2">
+            Te recomendamos estudiar:
+          </h3>
+          <p class="text-4xl font-bold text-blue-600 mb-4">
+            {{result.carrera}}
+          </p>
+          
+          <p class="text-gray-600">
+            {{result.description}}
+          </p>
+        </div>
+
+        <!-- Gráfico de resultados -->
+        <div class="bg-gray-50 p-6 rounded-lg">
+          <h4 class="font-semibold mb-4">Análisis por áreas:</h4>
+          <div class="space-y-3">
+            <div *ngFor="let score of result.scores" class="relative">
+              <div class="flex justify-between mb-1">
+                <span class="text-sm font-medium">{{score.area}}</span>
+                <span class="text-sm font-medium">{{score.value.toFixed(1)}}%</span>
+              </div>
+              <div class="bg-gray-200 rounded-full h-2.5">
+                <div class="bg-blue-600 h-2.5 rounded-full" 
+                     [style.width.%]="score.value"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h4 class="font-semibold mb-4">Materias principales:</h4>
+            <ul class="list-disc list-inside space-y-2">
+              <li *ngFor="let materia of result.materias">{{materia}}</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h4 class="font-semibold mb-4">Perfil profesional:</h4>
+            <p>{{result.perfilProfesional}}</p>
+          </div>
+        </div>
+
+        <div class="flex justify-center space-x-4">
+          <button 
+            class="px-8 py-4 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+            (click)="resetTest()">
+            Reiniciar Test
+          </button>
+          <button 
+            class="px-8 py-4 bg-green-600 text-white rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
+            (click)="goToMentors()">
+            Ver Mentores
+          </button>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
   

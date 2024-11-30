@@ -22,11 +22,13 @@ export const routes: Routes = [
     path: 'estudiante',
     loadChildren: () =>
       import('./page/estudiante/estudiante.routes').then((e) => e.estudianteRoutes),
+    canActivate: [authGuard],
   },
 
   {
     path: 'mentor',
     loadChildren: () =>
       import('./page/mentor/mentor.routes').then((m) => m.mentorRoutes),
+    canActivate: [authGuard],
   },
 ];
