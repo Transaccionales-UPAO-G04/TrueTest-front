@@ -2,10 +2,10 @@
 .mentor-horarios-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;  /* Alinea los elementos en la parte superior */
-  gap: 20px;  /* Espacio entre los cuadros */
+  align-items: flex-start; /* Alinea los elementos en la parte superior */
+  gap: 20px; /* Espacio entre los cuadros */
   margin: 20px 0;
-  flex-wrap: wrap;  /* Permite que los elementos se ajusten en pantallas pequeñas */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
 }
 
 /* Cuadro de perfil del mentor */
@@ -15,8 +15,8 @@
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 48%;  /* Establece un ancho mínimo para que no se deforme */
-  max-width: 48%;  /* Limita el ancho máximo para que no se expanda demasiado */
+  min-width: 48%; /* Establece un ancho mínimo para que no se deforme */
+  max-width: 48%; /* Limita el ancho máximo para que no se expanda demasiado */
 }
 
 /* Títulos y párrafos del cuadro del mentor */
@@ -39,8 +39,8 @@
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 48%;  /* Establece un ancho mínimo para que no se deforme */
-  max-width: 48%;  /* Limita el ancho máximo para que no se expanda demasiado */
+  min-width: 48%; /* Establece un ancho mínimo para que no se deforme */
+  max-width: 48%; /* Limita el ancho máximo para que no se expanda demasiado */
 }
 
 /* Títulos del cuadro de horarios */
@@ -61,10 +61,13 @@
 .horarios-list li {
   background: rgba(66, 165, 245, 0.1);
   border-left: 5px solid #1e88e5;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+  padding: 20px 15px; /* Aumenta el padding interno */
+  margin-bottom: 20px; /* Aumenta el espacio entre los horarios */
   border-radius: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column; /* Apila el contenido dentro del horario */
+  gap: 10px; /* Espacio entre los elementos internos del horario */
 }
 
 .horarios-list li:hover {
@@ -84,6 +87,7 @@
   display: block;
 }
 
+/* Mensaje de no disponibilidad de horarios */
 .no-horarios-message {
   text-align: center;
   color: #90caf9;
@@ -130,38 +134,13 @@
   background-color: #1565c0; /* Azul más oscuro al pasar el mouse */
 }
 
-/* Para que el botón se vea bien alineado */
-.back-button {
-  display: inline-block;
-  margin: 20px 0;
-}
-
 /* Contenedor de los botones, alineados abajo */
-.horarios-list li {
-  display: flex;
-  flex-direction: column;  /* Apilar los elementos en columna */
-  justify-content: space-between;  /* Distribuir espacio entre el contenido */
-  background: rgba(66, 165, 245, 0.1);
-  border-left: 5px solid #1e88e5;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  height: 180px;  /* Altura fija para cada item */
-}
-
-.horarios-list li:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Contenedor de los botones */
 .horario-buttons {
-  margin-top: auto;  /* Esto empuja los botones hacia abajo */
+  margin-top: auto; /* Esto empuja los botones hacia abajo */
   display: flex;
-  justify-content: space-between;  /* Alinea los botones a la izquierda y derecha */
-  gap: 10px;  /* Espacio entre los botones */
-  width: 100%;  /* Los botones ocupan todo el ancho disponible */
+  justify-content: space-between; /* Alinea los botones a la izquierda y derecha */
+  gap: 10px; /* Espacio entre los botones */
+  width: 100%; /* Los botones ocupan todo el ancho disponible */
 }
 
 /* Botón Registrar - Azul */
@@ -172,12 +151,12 @@
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-  background-color: #2196F3;  /* Azul */
+  background-color: #2196F3; /* Azul */
   color: white;
 }
 
 .button-registrar:hover {
-  background-color: #1976D2;  /* Azul más oscuro */
+  background-color: #1976D2; /* Azul más oscuro */
   transform: translateY(-2px);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -190,12 +169,12 @@
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-  background-color: #2196F3;  /* Azul */
+  background-color: #2196F3; /* Azul */
   color: white;
 }
 
 .button-desregistrar:hover {
-  background-color: #1976D2;  /* Azul más oscuro */
+  background-color: #1976D2; /* Azul más oscuro */
   transform: translateY(-2px);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
