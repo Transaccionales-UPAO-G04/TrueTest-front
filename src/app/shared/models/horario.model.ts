@@ -4,5 +4,4 @@ export interface Horario {
   horaSesion: string;
   linkSesionPublica: string;
   nombre?: string; // Nombre del estudiante asignado (opcional, puede ser null o no asignado)
-
 }
