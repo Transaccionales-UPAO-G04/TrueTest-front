@@ -1,25 +1,47 @@
-/* Contenedor general para el perfil del mentor y los horarios */
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Botón Regresar */
+.back-button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #1565c0;
+}
+
+/* Contenedor general del perfil y horarios */
 .mentor-horarios-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;  /* Alinea los elementos en la parte superior */
-  gap: 20px;  /* Espacio entre los cuadros */
-  margin: 20px 0;
-  flex-wrap: wrap;  /* Permite que los elementos se ajusten en pantallas pequeñas */
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-/* Cuadro de perfil del mentor */
+/* Perfil del Mentor */
 .mentor-profile {
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 48%;  /* Establece un ancho mínimo para que no se deforme */
-  max-width: 48%;  /* Limita el ancho máximo para que no se expanda demasiado */
+  min-width: 48%;
+  max-width: 48%;
 }
 
-/* Títulos y párrafos del cuadro del mentor */
 .mentor-profile h2 {
   color: #1e88e5;
   font-size: 2rem;
@@ -32,26 +54,26 @@
   margin-bottom: 10px;
 }
 
-/* Cuadro de horarios del mentor */
+.mentor-link {
+  color: #1e88e5;
+  text-decoration: none;
+}
+
+.mentor-link:hover {
+  text-decoration: underline;
+}
+
+/* Horarios disponibles */
 .horarios-container {
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 48%;  /* Establece un ancho mínimo para que no se deforme */
-  max-width: 48%;  /* Limita el ancho máximo para que no se expanda demasiado */
+  min-width: 48%;
+  max-width: 48%;
 }
 
-/* Títulos del cuadro de horarios */
-.horarios-container h3 {
-  color: #1e88e5;
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Lista de horarios */
 .horarios-list {
   list-style: none;
   padding: 0;
@@ -79,123 +101,135 @@
 
 .horarios-list li span {
   color: #333;
-  margin-top: 5px;
   font-size: 1rem;
   display: block;
 }
 
+.horario-buttons {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.button-registrar, .button-desregistrar {
+  padding: 8px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #2196F3;
+  color: white;
+}
+
+.button-registrar:hover, .button-desregistrar:hover {
+  background-color: #1976D2;
+}
+
+/* Mensaje cuando no hay horarios */
 .no-horarios-message {
   text-align: center;
   color: #90caf9;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-top: 20px;
 }
 
-/* Estilo para mostrar que se está cargando */
-.loading {
+/* Sección de Reseñas */
+.reviews-container {
+  margin-top: 30px;
+}
+
+.reseña {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.reseña p {
+  margin-bottom: 10px;
+}
+
+.no-reviews-message {
   text-align: center;
-  color: #42a5f5;
+  color: #ccc;
   font-size: 1.2rem;
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-  .mentor-horarios-container {
-    flex-direction: column; /* Apilar los cuadros en pantallas pequeñas */
-    align-items: center; /* Centra los cuadros cuando están apilados */
-  }
-
-  .mentor-profile,
-  .horarios-container {
-    min-width: 100%; /* Asegura que los cuadros ocupen todo el ancho disponible */
-    max-width: 100%; /* Asegura que los cuadros no se expandan más allá del 100% */
-  }
-}
-
-/* Estilo para el botón de regresar */
-.back-button {
-  background-color: #1e88e5; /* Azul */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #1565c0; /* Azul más oscuro al pasar el mouse */
-}
-
-/* Para que el botón se vea bien alineado */
-.back-button {
-  display: inline-block;
-  margin: 20px 0;
-}
-
-/* Contenedor de los botones, alineados abajo */
-.horarios-list li {
-  display: flex;
-  flex-direction: column;  /* Apilar los elementos en columna */
-  justify-content: space-between;  /* Distribuir espacio entre el contenido */
-  background: rgba(66, 165, 245, 0.1);
-  border-left: 5px solid #1e88e5;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+/* Estilos para el formulario de reseñas */
+.add-review {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  height: 180px;  /* Altura fija para cada item */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.horarios-list li:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.add-review h3 {
+  font-size: 1.6rem;
+  color: #1e88e5;
+  margin-bottom: 20px;
 }
 
-/* Contenedor de los botones */
-.horario-buttons {
-  margin-top: auto;  /* Esto empuja los botones hacia abajo */
+.add-review textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.add-review input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.add-review button {
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.add-review button:disabled {
+  background-color: #90caf9;
+}
+
+.add-review button:hover:not(:disabled) {
+  background-color: #1976D2;
+}
+
+/* Estilos de las estrellas */
+.stars-container {
   display: flex;
-  justify-content: space-between;  /* Alinea los botones a la izquierda y derecha */
-  gap: 10px;  /* Espacio entre los botones */
-  width: 100%;  /* Los botones ocupan todo el ancho disponible */
-}
-
-/* Botón Registrar - Azul */
-.button-registrar {
-  padding: 8px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
+  gap: 5px;
+  font-size: 30px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-  background-color: #2196F3;  /* Azul */
-  color: white;
 }
 
-.button-registrar:hover {
-  background-color: #1976D2;  /* Azul más oscuro */
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.star {
+  color: #ccc;
+  transition: color 0.3s ease;
 }
 
-/* Botón Desregistrar - Azul */
-.button-desregistrar {
-  padding: 8px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-  background-color: #2196F3;  /* Azul */
-  color: white;
+.star.filled {
+  color: #ff9800; /* Color dorado cuando la estrella está llena */
 }
 
-.button-desregistrar:hover {
-  background-color: #1976D2;  /* Azul más oscuro */
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.star:hover {
+  color: #ff9800; /* Color dorado al pasar el mouse */
 }
+
+
