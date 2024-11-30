@@ -21,6 +21,8 @@ export class HorariosComponent implements OnInit {
   newHorario: Horario = { fecha: '', horaSesion: '', linkSesionPublica: '' };
   editableHorario: Horario | null = null; // Horario en edición
   estudiantesAsignados: string[] = []; // Para almacenar el nombre de estudiantes asignados a cada horario
+  today: string = ''; // Fecha mínima permitida
+
 
   constructor(
     private horarioService: HorarioService, 
@@ -31,23 +33,25 @@ export class HorariosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Generar la fecha de hoy en formato YYYY-MM-DD
+    const now = new Date();
+    this.today = now.toISOString().split('T')[0];
+
     const user = this.authService.getUser();
     if (user) {
       this.perfilUsuarioService.getMentorOrStudentId(user.id).subscribe({
         next: (idMentor) => {
           if (idMentor) {
-            console.log('ID del mentor:', idMentor);
             this.horarioService.getHorarios(idMentor).subscribe({
               next: (horarios) => {
-                console.log('Horarios cargados:', horarios);
                 this.horarios = horarios;
-            
-                // Actualización de la lista de estudiantes asignados
-                this.estudiantesAsignados = horarios.map(horario => horario.nombre ? horario.nombre : 'Ningún estudiante registrado');
+                this.estudiantesAsignados = horarios.map(horario =>
+                  horario.nombre ? horario.nombre : 'Ningún estudiante registrado'
+                );
               },
               error: (err) => {
                 console.error('Error al cargar horarios:', err);
-              }
+              },
             });
           } else {
             this.snackBar.open('No se encontró un mentor asociado al usuario', 'Cerrar', { duration: 3000 });
@@ -55,7 +59,7 @@ export class HorariosComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al obtener el ID del mentor:', err);
-        }
+        },
       });
     }
   }
