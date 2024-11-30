@@ -10,6 +10,7 @@
           <th>Fecha</th>
           <th>Hora de la sesión</th>
           <th>Enlace</th>
+          <th>Estudiante</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -17,57 +18,49 @@
         <tr *ngFor="let horario of horarios">
           <td>{{ horario.fecha }}</td>
           <td>{{ horario.horaSesion }}</td>
-          <td><a href="{{ horario.linkSesionPublica }}" target="_blank">Ver enlace</a></td>
+          <td><a [href]="horario.linkSesionPublica" target="_blank">Enlace</a></td>
+          <td>{{ estudiantesAsignados[horarios.indexOf(horario)] }}</td>
           <td>
-            <!-- Botón Editar -->
-            <button *ngIf="horario.idHorario" (click)="startEditing(horario)" class="edit-button">Editar</button>
-
-            <!-- Botón Eliminar -->
-            <button *ngIf="horario.idHorario" (click)="deleteHorario(horario.idHorario!)" class="delete-button">Eliminar</button>
+            <button (click)="startEditing(horario)">Editar</button>
+            <button *ngIf="horario.idHorario !== undefined" (click)="deleteHorario(horario.idHorario)">Eliminar</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Formulario para crear un nuevo horario -->
-  <div class="new-horario-form">
+  <!-- Formulario de creación -->
+  <div class="horario-form">
     <h3>Crear Nuevo Horario</h3>
     <form (ngSubmit)="createHorario()">
-      <div class="form-group">
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" [(ngModel)]="newHorario.fecha" name="fecha" required>
-      </div>
-      <div class="form-group">
-        <label for="horaSesion">Hora de la sesión:</label>
-        <input type="time" id="horaSesion" [(ngModel)]="newHorario.horaSesion" name="horaSesion" required>
-      </div>
-      <div class="form-group">
-        <label for="linkSesionPublica">Enlace público de la sesión:</label>
-        <input type="url" id="linkSesionPublica" [(ngModel)]="newHorario.linkSesionPublica" name="linkSesionPublica" required>
-      </div>
-      <button type="submit" class="submit-button">Crear Horario</button>
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" [(ngModel)]="newHorario.fecha" name="fecha" required>
+
+      <label for="horaSesion">Hora de la sesión:</label>
+      <input type="time" id="horaSesion" [(ngModel)]="newHorario.horaSesion" name="horaSesion" required>
+
+      <label for="linkSesionPublica">Enlace de la sesión:</label>
+      <input type="url" id="linkSesionPublica" [(ngModel)]="newHorario.linkSesionPublica" name="linkSesionPublica" required>
+
+      <button type="submit">Crear</button>
     </form>
   </div>
 
-  <!-- Formulario de edición de horario (visible solo cuando se está editando) -->
-  <div *ngIf="editableHorario" class="edit-horario-form">
+  <!-- Formulario de edición -->
+  <div *ngIf="editableHorario" class="horario-form">
     <h3>Editar Horario</h3>
     <form (ngSubmit)="editHorario(editableHorario)">
-      <div class="form-group">
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" [(ngModel)]="editableHorario.fecha" name="fecha" required>
-      </div>
-      <div class="form-group">
-        <label for="horaSesion">Hora de la sesión:</label>
-        <input type="time" id="horaSesion" [(ngModel)]="editableHorario.horaSesion" name="horaSesion" required>
-      </div>
-      <div class="form-group">
-        <label for="linkSesionPublica">Enlace público de la sesión:</label>
-        <input type="url" id="linkSesionPublica" [(ngModel)]="editableHorario.linkSesionPublica" name="linkSesionPublica" required>
-      </div>
-      <button type="submit" class="submit-button">Actualizar Horario</button>
-      <button type="button" (click)="cancelEditing()" class="cancel-button">Cancelar</button>
+      <label for="fecha">Fecha:</label>
+      <input type="date" [(ngModel)]="editableHorario.fecha" name="fecha" required>
+
+      <label for="horaSesion">Hora de la sesión:</label>
+      <input type="time" [(ngModel)]="editableHorario.horaSesion" name="horaSesion" required>
+
+      <label for="linkSesionPublica">Enlace de la sesión:</label>
+      <input type="url" [(ngModel)]="editableHorario.linkSesionPublica" name="linkSesionPublica" required>
+
+      <button type="submit">Actualizar</button>
+      <button type="button" (click)="cancelEditing()">Cancelar</button>
     </form>
   </div>
 </div>
