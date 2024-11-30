@@ -1,129 +1,259 @@
 /* Fondo general */
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #1e88e5, #42a5f5, #90caf9);
-    background-size: 200% 200%;
-    animation: gradientAnimation 8s ease infinite;
-  }
-  
-  /* Animación de fondo */
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  /* Contenedor de la prueba vocacional */
-  .test-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  /* Tarjeta de la prueba vocacional */
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #1e88e5, #42a5f5, #90caf9);
+  background-size: 200% 200%;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+/* Animación de fondo */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor de la prueba vocacional */
+.test-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Tarjeta de la prueba vocacional */
+.test-card {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de imagen y bienvenida */
+.test-image {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.image-overlay-text h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.image-overlay-text p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Formulario de prueba vocacional */
+.test-form {
+  width: 55%;
+  padding: 50px 40px;
+}
+
+.test-form h2 {
+  color: #1e88e5;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los campos del formulario */
+.form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+/* Botón de inicio */
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff !important;
+  background-color: #1e88e5 !important;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #1565c0 !important;
+  transform: scale(1.02);
+}
+
+.submit-button:disabled {
+  background-color: #b0bec5 !important;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
   .test-card {
-    display: flex;
-    flex-direction: row;
-    width: 85%;
-    max-width: 900px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Sección de imagen y bienvenida */
-  .test-image {
-    width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #0d47a1, #1976d2);
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .image-overlay-text h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .image-overlay-text p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-  
-  /* Formulario de prueba vocacional */
-  .test-form {
-    width: 55%;
-    padding: 50px 40px;
-  }
-  
-  .test-form h2 {
-    color: #1e88e5;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilos para los campos del formulario */
-  .form-field {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    color: #333;
-  }
-  
-  /* Botón de inicio */
-  .submit-button {
-    width: 100%;
-    padding: 14px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #fff !important;
-    background-color: #1e88e5 !important;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: #1565c0 !important;
-    transform: scale(1.02);
-  }
-  
-  .submit-button:disabled {
-    background-color: #b0bec5 !important;
-  }
-  
-  /* Responsivo */
-  @media (max-width: 992px) {
-    .test-card {
       flex-direction: column;
       max-width: 600px;
-    }
-  
-    .test-image {
+  }
+
+  .test-image {
       width: 100%;
       height: 180px;
-    }
-  
-    .test-form {
+  }
+
+  .test-form {
       width: 100%;
       padding: 30px;
-    }
   }
+}
+
+test.component.css
+
+/* Estilos del cuestionario */
+.question-container {
+  background-color: rgb(26, 196, 139);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.progress-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.progress-bar-bg {
+  background-color: #e5e7eb;
+  height: 10px;
+  border-radius: 9999px;
+  margin-top: 8px;
+}
+
+.progress-bar {
+  background-color: #3b82f6;
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.question-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.question-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  align-items: center;
+}
+
+.option-button {
+  width: 100%;
+  height: 48px;
+  font-size: 18px;
+  border: 2px solid #c72943;
+  border-radius: 0.5rem;
+  background-color: rgb(35, 174, 209);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.option-button:hover {
+  background-color: #0e53ad;
+  border-color: #93c5fd;
+}
+
+.option-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #1e49a0;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.reset-button {
+  background-color: #ff6347;
+  color: white;
+}
+
+.reset-button:hover {
+  background-color: #ff4500;
+}
+
+.carrera-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1e49a0;
+}
+
+.carrera-text.medicina-text {
+  color: #ff6347;
+}
+
+.carrera-text.ingenieria-text {
+  color: #32cd32;
+}
+
+.carrera-text.arquitectura-text {
+  color: #8a2be2;
+}
+
+.mentors-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.mentors-button:hover {
+  background-color: #45a049;
+}
+
   
