@@ -165,32 +165,6 @@ unregisterStudent(horarioId: number | undefined): void {
   }
 }
 
-  // Enviar reseña
-  onSubmit(): void {
-    if (this.reviewForm.invalid) {
-      return;
-    }
-  }
-
-  // Método para desregistrar al estudiante de un horario
-  unregisterStudent(horarioId: number | undefined): void {
-    if (horarioId !== undefined) {
-      this.horarioService.unregisterStudentFromHorarioByStudent(horarioId, this.idEstudiante).subscribe({
-        next: (response) => {
-          console.log('Estudiante desregistrado del horario:', response);
-          this.studentRegisteredToHorario[horarioId] = false;
-          this.snackBar.open('Cancelaste el registro de horario con exito!', 'Cerrar', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center'
-          });
-        },
-        error: (error) => {
-          console.error('Error al desregistrar estudiante:', error);
-        }
-      });
-    }
-  }
 // Método para navegar hacia atrás
   goBack(): void {
     this.router.navigate(['/mentores']);  // Cambia '/mentores' por la ruta que desees

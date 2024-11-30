@@ -199,7 +199,7 @@ body {
   border: 1px solid #ddd;
   font-size: 1rem;
   margin-bottom: 10px;
-
+}
 /* Contenedor de los botones, alineados abajo */
 .horario-buttons {
   margin-top: auto; /* Esto empuja los botones hacia abajo */
